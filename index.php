@@ -1,3 +1,7 @@
+<!--
+Page d'accueil permettant la connexion ainsi que la création de compte
+ -->
+
 <?php include("templates/head.inc.php"); ?>
 
 <body>
