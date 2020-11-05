@@ -14,12 +14,18 @@ h1{
 	font-size: 3em;
 	text-align: center;
 	margin-bottom: 1em;
+	padding-top: 1em;
 }
 
 /* Style menu navigation */
 #nav{
 	font-size: 3em;
+	background-color: orange;
+}
 
+#nav a{
+	margin-left: 0.7em;
+	margin-right: 0.7em;
 }
 
 /* Style Post */
@@ -39,23 +45,51 @@ h1{
 
 #textpostelement{
 	text-align: justify;
+	padding: 1em;
 }
 
-#commentlike p{
+#commentlike a{
 	font-size: 1em;
+	color: orange;
+}
+
+#imagepostelement{
+
 }
 
 /* Style fil d'actualité*/
 
+/* Style page commentaires */
+#soustitrecommentaires{
 
+	margin-top: 1em;
+	padding-top: 1em;
+}
+
+#commentelement{
+	padding-top: 1em;
+	border-top: 1px solid grey;
+}
 
 /* Style Footer */
 
-footer{
-	border-top: 1px solid grey;
-	padding-top: 1em;
+footer {
+	margin-top: 1em;
+	padding-top: 2em;
+	background-color: orange;	
+	padding-bottom: 2em;
+}
+
+footer h3{
+	font-size: 2.5em;
+}
+
+footer p{
+	font-weight: 100;
+	font-size: 2em;
 }
 
 #soustitrefooter{
 	margin-left: 2em;
+	
 }
