@@ -1,6 +1,7 @@
 /* Style header */
 h1{
 	text-align: center;
+	font-size: 3em;
 }
 
 #undername{
@@ -12,7 +13,7 @@ h1{
 #soustitre {
 	font-size: 3em;
 	text-align: center;
-	margin-bottom: 2em;
+	margin-bottom: 1em;
 }
 
 /* Style menu navigation */
@@ -21,9 +22,40 @@ h1{
 
 }
 
+/* Style Post */
+#postelement{
+	padding-top: 1em;
+	border-top: 1px solid black;
+}
+
+#pseudopostelement{
+	font-size: 1.5em;
+}
+
+#idpostelement{
+	font-size: 1.5em;
+	margin-left: 0.5%;
+}
+
+#textpostelement{
+	text-align: justify;
+}
+
+#commentlike p{
+	font-size: 1em;
+}
 
 /* Style fil d'actualité*/
 
-#commentlike{
-	font-size: 1.5em;
+
+
+/* Style Footer */
+
+footer{
+	border-top: 1px solid grey;
+	padding-top: 1em;
+}
+
+#soustitrefooter{
+	margin-left: 2em;
 }
