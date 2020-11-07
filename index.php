@@ -35,6 +35,7 @@ Page d'accueil permettant la connexion ainsi que la création de compte
 						<a href="#">Créer un compte</a>
 					</div>
 				</div>
+			</div>
 			</article>
 			<article class="col-xs-6 col-sm-6 col-md-6 col-lg-6 pr-0 pt-3">
 				<img  class="img-fluid" src="images/womenChatting.jpg"  alt="Discussion">
