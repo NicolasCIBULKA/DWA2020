@@ -2,15 +2,23 @@
  Page affichant le fil d'actualité du site
  ie l'ensemble des posts suivis
  -->
-
-<?php include ("templates/head.inc.php"); ?>
+<?php include("functions/function.inc.php"); ?>
+<?php include("templates/head.inc.php"); ?>
 <body>
 	<?php include ("templates/header.inc.php"); ?>
 	
 	<?php include("templates/nav.inc.php"); ?>
 	
 	<h2 id="soustitre">Fil d'actualité</h2>
-
+	<?php 
+	try{
+		$bdd=new PDO('mysql:host=127.0.0.1;dbname=dwaprojet;charset=utf8','dwauser','A123456*');
+		
+	}
+	catch (Exception $e){
+		die('Erreur : ' . $e->getMessage());
+	}	
+	?>
 	<div id="postelement" class="container">
 		<div class="container">
 			<div class="row">
@@ -162,7 +170,7 @@
 		</div>
 	</div>
 
-
+	<?php displayPost(); ?>
 	<?php include ("templates/footer.inc.php"); ?>
 </body>
 </html>

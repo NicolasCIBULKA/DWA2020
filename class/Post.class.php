@@ -8,19 +8,25 @@ class Post{
     	superglobale ou non*/
 
     	private $_textPost;
-   	private $_imagePost;
+   	  private $_imagePost;
     	private $_like;
+      private $_user;
 
 	//deux underscores au début
-    	public function __construct($textPost,$imagePost,$like){
+    	public function __construct($textPost,$imagePost,$like,$user){
 
      	 //$this->_textPost=$textPost ou
-	$this->setTextPost($textPost);
-      	$this->setImagePost($imagePost);
+	    $this->setTextPost($textPost);
+      $this->setImagePost($imagePost);
      	$this->setLike($like);
+      $this->setUser($user)
     	}
 
     	//Accesseurs pour chaque attribut
+      public function getUser(){
+        return $this->_user;
+      }
+
     	public function getTextPost(){
       	return $this->_textPost;
     	}
@@ -63,5 +69,9 @@ class Post{
     	public function setLike($like){
       		$this->_like=$like;
    	 }
+
+     public function setUser($user){
+      $this->_user=$user;
+     }
 }
 ?>
