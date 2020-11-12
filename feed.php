@@ -2,7 +2,14 @@
  Page affichant le fil d'actualité du site
  ie l'ensemble des posts suivis
  -->
-<?php include("functions/function.inc.php"); ?>
+<?php 
+	session_start();
+	if(empty($_SESSION["User"])){
+		header("Location:index.php");
+	}
+ ?>
+<?php require_once("functions/function.inc.php"); ?>
+<?php require_once("class/User.class.php"); ?>
 <?php include("templates/head.inc.php"); ?>
 <body>
 	<?php include ("templates/header.inc.php"); ?>

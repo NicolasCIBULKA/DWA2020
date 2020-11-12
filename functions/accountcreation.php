@@ -11,26 +11,26 @@
 	$bdd = BDconnect();
 
 	// On effectue une requete pour verifier la non existence de compte avec cet identifiant ou ce mail
-	$requete = 'SELECT idUser, mail FROM Users WHERE idUser= ? OR mail=? ';
-	$req = $bbd->prepare($requete);
+	$requete = 'SELECT id_user, mail FROM Users WHERE id_user= ? OR mail=? ';
+	$req = $bdd->prepare($requete);
 	$req->execute(array($_POST["idcreation"], $_POST["mailcreation"]));
 
 	if($req->rowCount() == 0){
 		// Non existence de compte avec ce mail ou cet identifiant
-		// On cree le compte
-		$requete = 'INSERT INTO User (id_user, username, firstname, lastname, birthdate, passwords, url_icon, mail) VALUES (?,?,?,?,?,?,?)';
-		$req = $bbd->prepare($requete);
-		$req->execute(array($_POST["idcreation"], $_POST["pseudocreation"], $_POST["prenomcreation"], $_POST["nomcreation"], $_POST["birthdatecreation"],md5($_POST["mdpcreation"]) , NULL, $_POST["mailcreation"]));
+		// On creatione le compte
+		$requete = 'INSERT INTO Users (id_user, username, firstname, lastname, birthdate, passwords, url_icon, mail) VALUES (?,?,?,?,?,?,?,?)';
+		$req = $bdd->prepare($requete);
+		$req->execute(array($_POST["idcreation"], $_POST["pseudocreation"], $_POST["prenomcreation"], $_POST["nomcreation"], $_POST["birthdatecreation"], password_hash($_POST["mdpcreation"],PASSWORD_DEFAULT), NULL, $_POST["mailcreation"]));
 		RequestClose($req);
 		header('Location:../index.php');
-
+		//echo "ui";
 	}
 	else{
 		// Id ou mail deja existant
 		// Pas de creation de compte
 		header('Location:../index.php');
+		//echo "non";
 	}
-
 
 
 

@@ -1,5 +1,5 @@
 <?php
-include("../class/User.class.php");
+include("class/User.class.php");
 // ---------------------------------------
 //				FONCTIONS BD
 // ---------------------------------------
@@ -7,7 +7,7 @@ include("../class/User.class.php");
 // Fonction de connexion à la bd
 function BDconnect(){
 	try{
-		$bdd=new PDO('mysql:host=localhost;dbname=dwaprojet;charset=utf8','dwauser','A123456*');
+		$bdd=new PDO('mysql:host=localhost;dbname=dwaprojet;charset=utf8','dwauser','A123456*', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 		
 	}
 	catch (Exception $e){

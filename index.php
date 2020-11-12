@@ -63,7 +63,7 @@ Page d'accueil permettant la connexion ainsi que la création de compte
 	<div class="container-fluid justify-content-center">
 		<h3>Créer votre compte dès maintenant !</h3>
 		<div class="row">
-			<form class="col-6 modal-body" action="">
+			<form class="col-6 modal-body" method="post" action="functions/accountcreation.php">
 				<div class="form-group ">
 					<input class="form-control" placeholder="Identifiant" name="idcreation" type="text" required="required">
 				</div>
@@ -86,6 +86,11 @@ Page d'accueil permettant la connexion ainsi que la création de compte
 
 				<div class="form-group">
 					<input class="form-control" placeholder="Adresse Mail" name="mailcreation" type="text" required="required">
+				</div>
+
+				<div class="form-group">
+					<label for="birthdatecreation">Date de Naissance : </label>
+					<input class="form-control"id="birthdatecreation" name="birthdatecreation" type="date" required="required">
 				</div>
 				<input class="btn btn-primary btn-lg btn-block login-btnn" type="submit" value="Creer votre compte !">
 			</form>
