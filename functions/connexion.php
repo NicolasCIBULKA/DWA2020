@@ -29,8 +29,9 @@ if(isset($_POST['identifiant']) && isset($_POST['mdp'])){
 
 		// On crée une variable de session pour l'utilisateur et on remplit les données
 		$_SESSION["User"] = new User($row[0], $row[1], $row[5]);
-
-
+		// -----------
+		// 	  TODO
+		// -----------
 
 		// On redirige vers le feed.php
 		header('Location: ../feed.php');
