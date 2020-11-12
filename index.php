@@ -42,6 +42,55 @@ Page d'accueil permettant la connexion ainsi que la création de compte
 			</article>
 		</div>
 	</div>
+
+	<div class="container-fluid">
+		<h3 class="text-center">Notre réseau social</h3>
+		<div class="row justify-content-center">
+			<div class="col-3">
+				Lorem ipsum dolor sit amet consectetur adipisicing, elit. Quisquam modi doloremque alias aut, beatae nisi? Cum alias quaerat aperiam nemo ullam unde a ipsam excepturi, deserunt atque rem, doloribus reprehenderit?
+				Eius rem aspernatur eveniet error quidem cumque asperiores tempora veritatis in at nihil recusandae nostrum laboriosam exercitationem, natus cum unde voluptate molestias aliquid animi magnam illum excepturi quaerat et? Itaque.
+			</div>
+			<div class="col-3">
+				Lorem ipsum dolor sit amet consectetur adipisicing, elit. Quisquam modi doloremque alias aut, beatae nisi? Cum alias quaerat aperiam nemo ullam unde a ipsam excepturi, deserunt atque rem, doloribus reprehenderit?
+				Eius rem aspernatur eveniet error quidem cumque asperiores tempora veritatis in at nihil recusandae nostrum laboriosam exercitationem, natus cum unde voluptate molestias aliquid animi magnam illum excepturi quaerat et? Itaque.
+			</div>
+			<div class="col-3">
+				Lorem ipsum dolor sit amet consectetur adipisicing, elit. Quisquam modi doloremque alias aut, beatae nisi? Cum alias quaerat aperiam nemo ullam unde a ipsam excepturi, deserunt atque rem, doloribus reprehenderit?
+				Eius rem aspernatur eveniet error quidem cumque asperiores tempora veritatis in at nihil recusandae nostrum laboriosam exercitationem, natus cum unde voluptate molestias aliquid animi magnam illum excepturi quaerat et? Itaque.
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid justify-content-center">
+		<h3>Créer votre compte dès maintenant !</h3>
+		<div class="row">
+			<form class="col-6 modal-body" action="">
+				<div class="form-group ">
+					<input class="form-control" placeholder="Identifiant" name="idcreation" type="text" required="required">
+				</div>
+				
+				<div class="form-group">
+					<input class="form-control" placeholder="Pseudo" name="pseudocreation" type="text" required="required">
+				</div>
+				
+				<div class="form-group">
+					<input class="form-control" placeholder="Nom de Famille" name="nomcreation" type="text" required="required">
+				</div>
+
+				<div class="form-group">
+					<input class="form-control" placeholder="Prenom" name="prenomcreation" type="text" required="required">
+				</div>
+
+				<div class="form-group">
+					<input class="form-control" placeholder="Mot de passe" name="mdpcreation" type="password" required="required">
+				</div>
+
+				<div class="form-group">
+					<input class="form-control" placeholder="Adresse Mail" name="mailcreation" type="text" required="required">
+				</div>
+				<input class="btn btn-primary btn-lg btn-block login-btnn" type="submit" value="Creer votre compte !">
+			</form>
+		</div>
+	</div>
 	<?php include("templates/footer.inc.php"); ?>
 </body>
 </html>
