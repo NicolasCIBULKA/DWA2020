@@ -6,7 +6,7 @@
   <body>
     <?php include ("templates/header.inc.php"); ?>
 	<?php include("templates/nav.inc.php"); ?>
-	<div id="conversation" class="container" style="padding-top:5%">
+	<div id="conversation" class="containerconversations" style="padding-top:5%">
     <section class="contacts">
       <h3>Conversations</h3>
       <article>
@@ -41,7 +41,7 @@
 		}
 	?>
       </div>
-      <article class="container">
+      <article class="containerconversations">
         <h2 style="display:none;">blabla</h2>
         <input type="text" id="message_sent" name="message" class="textsend">
         <input type="button" class="button" value="Valider">
