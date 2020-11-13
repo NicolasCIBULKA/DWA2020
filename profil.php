@@ -1,31 +1,35 @@
-	<?php include("templates/head.inc.php"); ?>
+<?php include("templates/head.inc.php"); ?>
 <body>
 <?php include("templates/header.inc.php"); ?>
+<?php include("templates/nav.inc.php"); ?>
 
 <div class="container-fluid">
 
-	<div class="row">
-		
-		<div class="col-3 , text-center">
+	<div class="row justify-content-center">
+
+		<div class="col-sm-3 , col , text-center">
 			<div class="container , border">
 				<ul class="list-group list-group-flush">
 					<li class="list-group-item"><a href = "#"> Nouveau Poste </a></li>
 					<li class="list-group-item"><a href = "#"> Modifier Profil </a></li>
 					<li class="list-group-item"><a href = "#"> Autre Option </a></li>
 					<li class="list-group-item"><a href = "#"> Autre Option </a></li>
-					<li class="list-group-item"><a href = "#"> Deconnexion </a></li>
+					<li class="list-group-item"><a href = "./functions/deconnexion.php"> Deconnexion </a></li>
 				</ul>
 			</div>
 		</div>
 		
-		<div class="col">
+		<div class="col-sm-6 , col-12">
 
 			<div class="container-fluid ,border-bottom-0">
 			<!-- Image de Banniere et photo de profile generique à modifier -->
 				<div class="row">
+					<div class="col-12">
 					<img  class="img-fluid" id="banner" src="./images/banner-orange.png" alt="profile banner"/>
-
-					<div class="col-2 , rounded mx-auto d-block">
+				</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-2 , col-3 , col-md-3, rounded mx-auto d-block">
 						<img class="img-fluid , rounded-circle" id="profile_pic" src="./images/profile-picture.png" alt="Profile Picture"/>
 					</div>
 				</div>
@@ -67,7 +71,7 @@
 
 		</div>
 
-		<div class="col-3 , text-center">
+		<div class="col-sm-3 , col-6 , text-center">
 			<div class="container">
 				<form method="get" action="profil.php">
   					<div class="form-group">
