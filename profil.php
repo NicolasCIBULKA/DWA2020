@@ -30,13 +30,15 @@
 				</div>
 				<div class="row">
 					<div class="col-sm-2 , col-3 , col-md-3, rounded mx-auto d-block">
-						<img class="img-fluid , rounded-circle" id="profile_pic" src="./images/profile-picture.png" alt="Profile Picture"/>
+						<img class="img-fluid , rounded-circle" id="profile_pic" src="./images/avatar-2.png" alt="Profile Picture"/>
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="col">
-						<h2>Bio</h2>
+						<h2>Pseudo</h2>
+						<p>@identifiant</p>
+						<h3>Bio</h3>
 						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam corporis, omnis tempora nam voluptates cum qui consectetur ipsum, tempore numquam autem necessitatibus harum hic in rerum molestias atque, veniam minus.
 						Recusandae at facere unde quas cum, magnam, saepe minima tempore corporis, non odit iusto, odio consequuntur! Quisquam totam, similique, doloribus nemo earum possimus pariatur, atque id eaque placeat quia dolore.</p>
 					</div>
