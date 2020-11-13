@@ -2,10 +2,10 @@
   /**
    * User class represent an User of Blabla't
    */
-  require 'PrivateMessage.php';
+  //namespace classes\User;
+  require_once('PrivateMessage.class.php');
 
   class User{
-  
   	private $_idUser;
   	private $_username;
   	private $_password;
