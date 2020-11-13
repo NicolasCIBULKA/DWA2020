@@ -4,6 +4,25 @@
  -->
 <?php include("functions/function.inc.php"); ?>
 <?php include("templates/head.inc.php"); ?>
+<style>
+.btn-circle{
+  width: 1.875rem;
+  height: 1.875rem;
+  text-align: center;
+  padding: 0.375rem 0;
+  font-size: 0.75rem;
+  line-height: 1.428571429;
+  border-radius: 0.938rem;
+}
+.btn-circle.btn-lg{
+  width: 3.125rem;
+  height: 3.125rem;
+  padding: 0.625rem 1rem;
+  font-size: 1.125rem;
+  line-height: 1.33;
+  border-radius: 1.563rem;
+}
+</style>
 <body>
 	<?php include ("templates/header.inc.php"); ?>
 	
@@ -19,6 +38,13 @@
 		die('Erreur : ' . $e->getMessage());
 	}	
 	?>
+	<div class="row">
+			<div class="position-fixed text-right col text-right">
+				<a href="./conversations.php" class="btn btn-dark btn-circle btn-lg btn-info" title="Ecrire un message">
+					<span class="fa fa-comment"></span>
+				</a>
+			</div>
+	</div>
 	<div id="postelement" class="container">
 		<div class="container">
 			<div class="row">
