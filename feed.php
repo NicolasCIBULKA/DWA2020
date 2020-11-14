@@ -36,18 +36,10 @@
 	<?php include("templates/nav.inc.php"); ?>
 	
 	<h2 id="soustitre">Fil d'actualité</h2>
-	<?php 
-	try{
-		$bdd=new PDO('mysql:host=127.0.0.1;dbname=dwaprojet;charset=utf8','dwauser','A123456*');
-		
-	}
-	catch (Exception $e){
-		die('Erreur : ' . $e->getMessage());
-	}	
-	?>
+	
 	<div class="row">
 			<div class="position-fixed text-right col text-right">
-				<a href="./conversations.php" class="btn btn-dark btn-circle btn-lg btn-info" title="Ecrire un message">
+				<a href="./createpost.php" class="btn btn-dark btn-circle btn-lg btn-info" title="Ecrire un message">
 					<span class="fa fa-comment"></span>
 				</a>
 			</div>
