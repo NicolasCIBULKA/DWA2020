@@ -32,7 +32,7 @@ Page d'accueil permettant la connexion ainsi que la création de compte
 						</form>
 					</div>
 					<div class="modal-footer">
-						<a href="#">Créer un compte</a>
+						<a id="toCreateAccount" href="#createaccount">Créer un compte</a>
 					</div>
 				</div>
 			</div>
@@ -64,7 +64,7 @@ Page d'accueil permettant la connexion ainsi que la création de compte
 	<div class="container-fluid justify-content-center">
 		<h3 class="text-center">Créer votre compte dès maintenant !</h3>
 		<div class="row justify-content-center">
-			<form class="col-6 modal-body " method="post" action="functions/accountcreation.php">
+			<form id="createaccount" class="col-6 modal-body " method="post" action="functions/accountcreation.php">
 				<div class="form-group ">
 					<input class="form-control" placeholder="Identifiant" name="idcreation" type="text" required="required">
 				</div>

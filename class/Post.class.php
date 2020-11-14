@@ -19,7 +19,7 @@ class Post{
 	    $this->setTextPost($textPost);
       $this->setImagePost($imagePost);
      	$this->setLike($like);
-      $this->setUser($user)
+      $this->setUser($user);
     	}
 
     	//Accesseurs pour chaque attribut

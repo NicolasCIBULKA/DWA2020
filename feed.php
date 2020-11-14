@@ -2,15 +2,16 @@
  Page affichant le fil d'actualité du site
  ie l'ensemble des posts suivis
  -->
+<?php require_once("functions/function.inc.php"); ?>
+<?php require_once("class/User.class.php"); ?>
+<?php include("templates/head.inc.php"); ?>
 <?php 
 	session_start();
 	if(empty($_SESSION["User"])){
 		header("Location:index.php");
 	}
  ?>
-<?php require_once("functions/function.inc.php"); ?>
-<?php require_once("class/User.class.php"); ?>
-<?php include("templates/head.inc.php"); ?>
+
 <style>
 .btn-circle{
   width: 1.875rem;

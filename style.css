@@ -118,6 +118,9 @@ h2.slogant {
 	margin: 100px auto;
 }
 
+#createaccount{
+	scroll-behavior: smooth;
+}
 
 /* Style bouton lien page écriture post */
 .btn-circle {
