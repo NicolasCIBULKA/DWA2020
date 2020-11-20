@@ -13,8 +13,8 @@
                     <form method="get" action="profil.php" >
     					<label for="recherche"></label>
     					<input type="search" class="form-control" id="recherche" placeholder="Recherche Blabla't">
-					<button type="submit" class="btn btn-primary">OK</button>
-				</form>
+						<button type="submit" class="btn btn-primary">OK</button>
+					</form>
                 </div>
             </div>
 
