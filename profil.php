@@ -27,7 +27,7 @@
 				</div>
 				<div class="row">
 					<div class="col-3 , col-sm-2 , rounded mx-auto d-block">
-						<img class="img-fluid , rounded-circle" id="profile_pic" src="./images/profile-picture.png" alt="Profile Picture"/>
+						<img class="img-fluid , rounded-circle" id="profile_pic" src="./images/avatar-2.png" alt="Profile Picture"/>
 					</div>
 				</div>
 
