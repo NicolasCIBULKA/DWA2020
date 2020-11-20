@@ -22,6 +22,7 @@
 				</svg>
 			</a>
 		</li>
+		<!--
 		<li>
 			<a class="col-2"  href="conversations.php">
 				<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-envelope" fill="white" xmlns="http://www.w3.org/2000/svg">
@@ -29,6 +30,7 @@
 				</svg>
 			</a>
 		</li>
+		-->
 		<li>
 			<a class="col-3" href="#">
 				<svg width="0.5em" height="0.5em" viewBox="0 0 16 16" class="bi bi-arrow-counterclockwise" fill="white" xmlns="http://www.w3.org/2000/svg">
