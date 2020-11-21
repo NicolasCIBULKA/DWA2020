@@ -8,15 +8,7 @@
 
 		<div class="row justify-content-center">
 
-			<div class="form-inline , d-none , d-sm-block">
-                <div class="form-group col-xs-6">
-                    <form method="get" action="profil.php" >
-    					<label for="recherche"></label>
-    					<input type="search" class="form-control" id="recherche" placeholder="Recherche Blabla't">
-						<button type="submit" class="btn btn-primary">OK</button>
-					</form>
-                </div>
-            </div>
+			
 
 			<div class="container , border-bottom">
 			<!-- Image de Banniere et photo de profile generique à modifier -->

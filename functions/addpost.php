@@ -24,7 +24,7 @@
 
 	// Verification si un fichier est ajouté au post
 	$file = NULL;
-	if(isset($_FILES['image'])){
+	if(isset($_FILES['image']) && (!empty($_FILES['image']))){
 		// verification MIME fichier
 		$mime = mime_content_type($_FILES['image']["tmp_name"]);
 		if($mime == "image/png" || $mime == "image/jpeg"|| $mime == "image/gif"){
@@ -43,8 +43,8 @@
 	}
 	if(strlen($_POST["message"]) <= 300){
 		$tmpuser = $_SESSION['User'];
-		$req = $bdd->prepare("INSERT INTO Post (id_post, id_writer, text, url_image) VALUES (?, ?, ?, ?)");
-		$req->execute(array(NULL, $tmpuser->getIdUser(), $_POST["message"] , $file));
+		$req = $bdd->prepare("INSERT INTO Post ( id_writer, text, url_image) VALUES ( ?, ?, ?)");
+		$req->execute(array( $tmpuser->getIdUser(), $_POST["message"] , $file));
 		RequestClose($req);
 		echo $_FILES["image"]["name"];
 		header('Location:../feed.php');
