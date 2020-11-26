@@ -1,3 +1,9 @@
+<?php 
+	session_start();
+	if(empty($_SESSION["User"])){
+		header("Location:index.php");
+	}
+ ?>
 <?php include("templates/head.inc.php"); ?>
 <body>
 <?php include("templates/header.inc.php"); ?>
@@ -12,6 +18,15 @@
 
 			<div class="container , border-bottom">
 			<!-- Image de Banniere et photo de profile generique à modifier -->
+				<div class="row" >
+					<form action="research.php" method="get">
+						<div class="form-group">
+							<label for="iduser">Recherche de Personnes:</label>
+							<input type="text" id="iduser" name="iduser">
+							<input type="submit" value="Rechercher">
+						</div>
+					</form>
+				</div>
 				<div class="row">
 					<div class="col">
 						<img  class="img-fluid" id="banner" src="./images/banner-orange.png" alt="profile banner"/>
