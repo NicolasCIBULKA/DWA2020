@@ -18,13 +18,13 @@
 	
 	<h2 id="soustitre">Post</h2>
 
-	<div id="postelement" class="container">
+	<div class="container postelement">
 		<div class="container">
 			<div class="row">
-				<p id="pseudopostelement">Pseudo -</p>
-				<p id="idpostelement"> @Identifiant</p>
+				<p class="pseudopostelement">Pseudo -</p>
+				<p class="idpostelement"> @Identifiant</p>
 			</div>
-			<div id="textpostelement" class="row">
+			<div class="row textpostelement">
 				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam corporis, omnis tempora nam voluptates cum qui consectetur ipsum, tempore numquam autem necessitatibus harum hic in rerum molestias atque, veniam minus.
 				Recusandae at facere unde quas cum, magnam, saepe minima tempore corporis, non odit iusto, odio consequuntur! Quisquam totam, similique, doloribus nemo earum possimus pariatur, atque id eaque placeat quia dolore.</p>
 			</div>
@@ -33,20 +33,18 @@
 			</div>
 			</div>
 		</div>
-	<h4 class="container" id="soustitrecommentaires">Ecrire un Commentaire</h4>
-	<div id="commentelement" class="container">
+	<h4 class="container soustitrecommentaires" >Ecrire un Commentaire</h4>
+	<div class="container commentelement">
 		<form class="align-items-center col-12 col-md-12 col-sm-12 col-xs-12 form-group" action="functions/createcomment.php" method="post">
 			<label for="message" class="form-control-lg">Votre message : </label>
 			<textarea class="form-control" name="message" id="message" cols="30" rows="5" aria-describedby="msg"></textarea>
 			<small id="msg" class="form-text text-muted"><span id="undertext">Pas plus de 300 caractères ! / <span id="nbcara">300</span> restants</span></small>
 			<input type="hidden" name="idpost" value=<?php echo $_GET["idpost"] ?>/>
 			<input type="submit" id="submit" value="Écrire un nouveau post !">
-			</div>
-
 		</form>
 	</div>
 
-	<h3 class="container" id="soustitrecommentaires">Commentaires</h3>
+	<h3 class="container soustitrecommentaires" >Commentaires</h3>
 
 
 	<?php 
@@ -63,19 +61,19 @@
 					$rowUser = $req->fetch();
 
 					// Affichage
-					echo "<div id=\"commentelement\" class=\"container\">";
+					echo "<div class=\"container commentelement\">";
 					echo "<div class=\"container\">";
 					echo "<div class=\"row\">";
-					echo "<p id=\"pseudopostelement\">".$rowUser[0]." -</p>";
-					echo "<p id=\"idpostelement\"> @".$rowUser[1]."</p>";
+					echo "<p class=\"pseudopostelement\">".$rowUser[0]." -</p>";
+					echo "<p class=\"idpostelement\"> @".$rowUser[1]."</p>";
 					echo "</div>";
-					echo "<div id=\"textpostelement\" class=\"row\">";
+					echo "<div class=\"row textpostelement\">";
 					echo "<p>".$rowComment[3]."</p>";
 					echo "</div>";
 					echo "<div class=\"row\">";
 					echo "<p>".$rowComment[4]."</p>";
 					echo "</div>";
-					echo "<div class=\"row justify-content-center\" id=\"commentlike\">";
+					echo "<div class=\"row justify-content-center commentlike\" >";
 					echo "<div class=\"btn btn-lg\">";
 					echo "<a href=\"\">";
 					echo "<svg width=\"1em\" height=\"1em\" viewBox=\"0 0 16 16\" class=\"bi bi-heart\" fill=\"currentColor\" xmlns=\"http://www.w3.org/2000/svg\>";
@@ -90,7 +88,7 @@
 				}
 			}
 			else{
-				echo "<div id=\"commentelement\" class=\"container\"><p class=\"text-center\">Pas de commentaires pour le moment ...</p></div>";
+				echo "<div class=\"container commentelement\"><p class=\"text-center\">Pas de commentaires pour le moment ...</p></div>";
 			}
 
 		}

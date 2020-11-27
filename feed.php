@@ -44,20 +44,20 @@
 				</a>
 			</div>
 	</div>
-	<div id="postelement" class="container">
+	<div class=" container postelement">
 		<div class="container">
 			<div class="row">
-				<p id="pseudopostelement">Pseudo -</p>
-				<p id="idpostelement"> @Identifiant</p>
+				<p class="pseudopostelement">Pseudo -</p>
+				<p class="idpostelement"> @Identifiant</p>
 			</div>
-			<div id="textpostelement" class="row">
+			<div class="row textpostelement">
 				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam corporis, omnis tempora nam voluptates cum qui consectetur ipsum, tempore numquam autem necessitatibus harum hic in rerum molestias atque, veniam minus.
 				Recusandae at facere unde quas cum, magnam, saepe minima tempore corporis, non odit iusto, odio consequuntur! Quisquam totam, similique, doloribus nemo earum possimus pariatur, atque id eaque placeat quia dolore.</p>
 			</div>
 			<div class="row">
 				<p>Le 23/12/2020 à 12h23:43</p>
 			</div>
-			<div class="row justify-content-center" id="commentlike">
+			<div class="row justify-content-center commentlike" >
 				
 				<div class="btn btn-lg ">
 					<a href="">
@@ -81,13 +81,13 @@
 		</div>
 	</div>
 
-	<div id="postelement" class="container">
+	<div class="container postelement">
 		<div class="container">
 			<div class="row">
-				<p id="pseudopostelement">Pseudo -</p>
-				<p id="idpostelement"> @Identifiant</p>
+				<p class="pseudopostelement">Pseudo -</p>
+				<p class="idpostelement"> @Identifiant</p>
 			</div>
-			<div id="textpostelement" class="row">
+			<div class="row textpostelement">
 				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam corporis, omnis tempora nam voluptates cum qui consectetur ipsum, tempore numquam autem necessitatibus harum hic in rerum molestias atque, veniam minus.
 				Recusandae at facere unde quas cum, magnam, saepe minima tempore corporis, non odit iusto, odio consequuntur! Quisquam totam, similique, doloribus nemo earum possimus pariatur, atque id eaque placeat quia dolore.</p>
 			</div>
@@ -118,20 +118,20 @@
 		</div>
 	</div>
 
-	<div id="postelement" class="container">
+	<div class="container postelement">
 		<div class="container">
 			<div class="row">
-				<p id="pseudopostelement">Pseudo -</p>
-				<p id="idpostelement"> @Identifiant</p>
+				<p class="pseudopostelement">Pseudo -</p>
+				<p class="idpostelement"> @Identifiant</p>
 			</div>
-			<div id="textpostelement" class="row">
+			<div class="row textpostelement">
 				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam corporis, omnis tempora nam voluptates cum qui consectetur ipsum, tempore numquam autem necessitatibus harum hic in rerum molestias atque, veniam minus.
 				Recusandae at facere unde quas cum, magnam, saepe minima tempore corporis, non odit iusto, odio consequuntur! Quisquam totam, similique, doloribus nemo earum possimus pariatur, atque id eaque placeat quia dolore.</p>
 			</div>
 			<div class="row">
 				<p>Le 23/12/2020 à 12h23:43</p>
 			</div>
-			<div class="row justify-content-center" id="commentlike">
+			<div class="row justify-content-center commentlike" >
 				
 				<div class="btn btn-lg ">
 					<a href="">
@@ -155,23 +155,20 @@
 		</div>
 	</div>
 
-	<div id="postelement" class="container">
+	<div class="container postelement">
 		<div class="container">
 			<div class="row">
-				<p id="pseudopostelement">Pseudo -</p>
-				<p id="idpostelement"> @Identifiant</p>
+				<p class="pseudopostelement">Pseudo -</p>
+				<p class="idpostelement"> @Identifiant</p>
 			</div>
-			<div id="textpostelement" class="row">
+			<div class="row textpostelement">
 				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam corporis, omnis tempora nam voluptates cum qui consectetur ipsum, tempore numquam autem necessitatibus harum hic in rerum molestias atque, veniam minus.
 				Recusandae at facere unde quas cum, magnam, saepe minima tempore corporis, non odit iusto, odio consequuntur! Quisquam totam, similique, doloribus nemo earum possimus pariatur, atque id eaque placeat quia dolore.</p>
 			</div>
 			<div class="row">
 				<p>Le 23/12/2020 à 12h23:43</p>
 			</div>
-			<div class="container">
-				<img class="img-fluid " src="images/test.jpg" alt="image de test" id="imagepostelement">
-			</div>	
-			<div class="row justify-content-center" id="commentlike">
+			<div class="row justify-content-center commentlike" >
 				
 				<div class="btn btn-lg ">
 					<a href="">
@@ -180,7 +177,8 @@
 					</svg>
 					Like
 				</a>
-					</div>
+				</div>
+
 					<div class="btn btn-lg ">
 					<a href="#">
 						<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chat-dots" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -189,12 +187,11 @@
 						</svg>
 						Commentaires
 					</a>
-					</div>
+				</div>
 			</div>
-			
 		</div>
 	</div>
-
+	
 	<?php //displayPost(); ?>
 	<?php include ("templates/footer.inc.php"); ?>
 </body>

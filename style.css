@@ -166,44 +166,44 @@ h2.slogant {
 }
 
 /* Style Post */
-#postelement {
+.postelement {
 	padding-top: 1em;
 	border-top: 1px solid black;
 }
 
-#pseudopostelement {
+.pseudopostelement {
 	font-size: 1.5em;
 }
 
-#idpostelement {
+.idpostelement {
 	font-size: 1.5em;
 	margin-left: 0.5%;
 }
 
-#textpostelement {
+.textpostelement {
 	text-align: justify;
 	padding: 1em;
 }
 
-#commentlike a {
+.commentlike a {
 	font-size: 1em;
 	color: orange;
 }
 
-#imagepostelement {
+.imagepostelement {
 
 }
 
 /* Style fil d'actualité*/
 
 /* Style page commentaires */
-#soustitrecommentaires {
+.soustitrecommentaires {
 
 	margin-top: 1em;
 	padding-top: 1em;
 }
 
-#commentelement {
+.commentelement {
 	padding-top: 1em;
 	border-top: 1px solid grey;
 }
