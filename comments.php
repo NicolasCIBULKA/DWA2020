@@ -12,7 +12,6 @@
  ?>
  <?php include("functions/function.inc.php"); ?>
 <?php include ("templates/head.inc.php"); ?>
-<body>
 	<?php include ("templates/header.inc.php"); ?>
 	
 	<?php include("templates/nav.inc.php"); ?>
