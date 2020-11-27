@@ -317,3 +317,12 @@ height:45px;
 border:1px solid #e0e0e0;
 
 }
+
+
+.orangecolor{
+    color: orange;
+}
+
+.orangecolor:hover {
+  color: orange;
+}
