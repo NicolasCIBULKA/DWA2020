@@ -1,3 +1,5 @@
+</head>
+<body>
 <header class="row">
 	<div class="col-1">
 		<img class="img-responsive" src="images/logo.png" alt="Logo" style="width:100%">

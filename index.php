@@ -91,7 +91,7 @@ Page d'accueil permettant la connexion ainsi que la création de compte
 
 				<p class="form-group">
 					<label for="birthdatecreation">Date de Naissance : </label>
-					<input class="form-control"id="birthdatecreation" name="birthdatecreation" type="date" required="required">
+					<input class="form-control" id="birthdatecreation" name="birthdatecreation" type="date" required="required">
 				</p>
 				<p class="text-center">
 					<input class="btn  createaccountbtn" type="submit" value="Creer votre compte !">

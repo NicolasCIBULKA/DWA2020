@@ -31,7 +31,6 @@
   border-radius: 1.563rem;
 }
 </style>
-<body>
 	<?php include ("templates/header.inc.php"); ?>
 	
 	<?php include("templates/nav.inc.php"); ?>
