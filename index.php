@@ -15,8 +15,8 @@ Page d'accueil permettant la connexion ainsi que la création de compte
 						<div class="modal-header">
 							<div class="avatar">
 								<img src="images/avatar-2.png" alt="Avatar">
-							</div>				
-							<h4 class="modal-title">Connexion</h4>	
+							</div>
+							<h4 class="modal-title">Connexion</h4>
 						</div>
 					<div class="modal-body">
 						<form method="post" action="functions/connexion.php">
