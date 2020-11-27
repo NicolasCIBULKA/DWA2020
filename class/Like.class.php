@@ -1,23 +1,19 @@
 ﻿<?php
 
 class Like{
-	private $_liked;
-	private $_numberLikes;
+	private $_liked=[];
+	private $_numberLikes=0;
 
-	public function __construct($liked,$numberLikes){
+	public function __construct($numberLikes){
 		
-		$this->setLiked($liked);
 		$this->setNumberLikes($numberLikes);
 
 	}
 	
 	public function setLiked($liked){
-		if(!is_bool($liked)){
-			trigger_error("Cette partie doit s'agir d'un bool", E_USER_WARNING);
-        		return;
-      		}
 
-		$this->_liked=$liked;
+		array_push($_liked,$id_user);
+
 	}
 	
 	public function setNumberLikes($numberLikes){
@@ -39,4 +35,30 @@ class Like{
 		return $this->_numberLikes;
 	}
 
+	public function addLikes(){
+
+      $like = $this->_numberLikes++;
+    
+    }
+
+    public function removeLikes(){
+  
+      if ($likeToRemove!=0){
+        $this->_numberLikes--;
+      }
+      else{
+        $this->_numberLikes=0;
+      }
+      
+    }
+
+
+	public function removeLiked($id_user){
+		$key = array_search('$id_user', $_liked);
+		unset($_liked[$key]);
+	}
+
+	function addLike($post,$id_user){
+	array_push($this->_liked, $id_user);
+	}
 }
