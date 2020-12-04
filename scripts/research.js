@@ -1,3 +1,27 @@
-window.onload(){
-	document.getElementById(elementId: DOMString)
-}
+window.onload = function(){
+	console.log('tezfzfazzfs');
+	document.getElementById("iduserbtn").addEventListener("click", function (e) {
+		console.log('tes');
+		var iduser = document.getElementById("iduser").textContent;
+		var xhr = new XMLHttpRequest();
+		//xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+		open("POST","functions/researchscript.php", true );
+		xhr.responseType = "text";
+		xhr.send(iduser);
+		xhr.onload = function () {
+			if(xhr.status != 200){
+				 alert("Erreur " + xhr.status + " : " + xhr.statusText);
+				 document.getElementById("researchelts").textContent = "<p class=\"text-center\">Recherche en cours ...</p>";
+			}
+			else{
+				document.getElementById("researchelts").textContent = xhr.getData("text");
+			}
+		};
+
+		xhr.onerror = function(){
+	    	alert("La requête a échoué");
+	    	document.getElementById("researchelts").textContent = "<p class=\"text-center\">Recherche échouée, retentez plus tard !</p>";
+		};
+	});
+};

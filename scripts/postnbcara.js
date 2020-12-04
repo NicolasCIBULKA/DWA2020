@@ -3,7 +3,7 @@
 
 window.onload = function(){
 	document.getElementsByName("message")[0].addEventListener("input", function(e){
-		console.log('kfoepz')
+		console.log('kfoepz');
 
 		var currentnbcara =document.getElementsByName("message")[0].value.length;
 		var nbcararestant = 300 - currentnbcara;

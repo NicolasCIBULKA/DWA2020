@@ -46,13 +46,13 @@ Page d'accueil permettant la connexion ainsi que la création de compte
 	<div class="container-fluid connexionillustrationtexts">
 		<h3 class="text-center">Notre réseau social</h3>
 		<div class="row justify-content-center">
-			<div class="col-3 text-justify">
+			<div class="col-sm-3 col-xs-12 text-justify indextext">
 				Blabla't est un réseau social qui vous permet de dire ce que vous pensez, de partager une envie, une expérience ou une émotion. Si vous choisisez de créer un compte vous avez la possibilité d'accéder à un fil d'actualité déroulant, de poster un message de taille limitée avec éventuellement une image. Vous pouvez également mentionner des utilisateurs avec leur identifiant.
 			</div>
-			<div class="col-3 text-justify">
+			<div class="col-sm-3 col-xs-12 text-justify indextext">
 				L'ergonomie de Blabla't a été pensé de telle sorte que l'ensemble des éléments soient facilement accessibles et lisibles pour tous les utilisateurs. L'interface est avant tout composé d'un fil d'actualité qui affiche l'ensemble des posts des personnes que vous suivez ainis que les posts aimés des autres personnes que vous suivez. Vous avez également accès aux différentes options comme la recherche d'autres utilisateurs et aux informations de votre compte à l'aide d'un menu facilement accessible. 
 			</div>
-			<div class="col-3 text-justify">
+			<div class="col-sm-3 col-xs-12 text-justify indextext">
 				Selon les critères, thèmes que vous avez renseigné dans votre profil Blabla't est capable de vous suggérer des personnes à suivre créant ainsi du contenu dans vos thèmes. 
 				<p class="lead"> Si vous avez envie de découvrir Blabla't n'hésitez pas à <strong> créer un compte ci-dessous ! <strong> </p>
 			</div>

@@ -1,3 +1,6 @@
+html{
+	overflow-x: hidden;
+}
 /* Style header */
 h1 {
 	text-align: center;
@@ -15,6 +18,10 @@ h1 {
 	text-align: center;
 	margin-bottom: 1em;
 	padding-top: 1em;
+}
+
+.indextext{
+	margin-bottom: 1em;
 }
 
 /* Style menu navigation */

@@ -11,18 +11,21 @@
 <?php include("templates/header.inc.php"); ?>
 <?php include("templates/nav.inc.php"); ?>
 
-<div class="container ">
+<div class="container " id="researchelts">
 	<h2 id="soustitre">Recherche d'utilisateurs</h2>
 	<div  class="row justify-content-center" >
-					<form action="research.php" method="get">
+					<form action="research.php" method="post" >
 						<div class="form-group">
 							<label for="iduser">Recherche de Personnes:</label>
 							<input type="text" id="iduser" name="iduser">
-							<input type="submit" class="btn btn-primary" value="Rechercher">
-						</div>
+							<!--<input type="submit" id="iduserbtn" class="btn btn-primary" value="Rechercher">-->
+						<button id="iduserbtn" class="btn btn-primary">Rechercher</button>	
 					</form>
+					
+					</div>
 				</div>
 	<?php 
+	/*
 		if(isset($_GET["iduser"])){
 			$bdd = BDconnect();
 			$req = $bdd->prepare("SELECT * FROM Users WHERE id_user LIKE ?");
@@ -59,6 +62,7 @@
 		else{
 			echo "<p class=\"text-center\">Erreur lors de la recherche ...</p>";
 		}
+		*/
 	?>
 	<div class="row justify-content-center">
 		<div class="col-6 col-sm-8 col-xs-12  d-flex flex-row bd-highlight mb-2">
@@ -74,7 +78,7 @@
 	
 </div>
 
-
+<script type="text/javascript" src="scripts/research.js"></script>
 <?php include("templates/footer.inc.php"); ?>
 </body>
 </html>
