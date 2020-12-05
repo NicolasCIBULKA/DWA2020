@@ -1,6 +1,34 @@
 html{
 	overflow-x: hidden;
 }
+
+.researchbutton {
+    position: fixed; 
+    bottom: 0%; 
+    right: 0%;
+    margin: 1em;
+    padding-top: 0.7em;
+	padding-bottom: 0.7em;
+	background-color: orange;
+}
+.researchbutton:hover{
+	background-color: orangered;
+}
+
+.messagebutton{
+	position: fixed; 
+    bottom: 10%; 
+    right: 0%;
+    margin: 0.7em;
+	font-size: 1.5em;
+	background-color: orange;
+	color: white;
+}
+
+.messagebutton:hover{
+	background-color: orangered;
+	color: white;
+}
 /* Style header */
 h1 {
 	text-align: center;
