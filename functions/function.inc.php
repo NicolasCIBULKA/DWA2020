@@ -30,6 +30,7 @@ function RequestClose($req){
 // affichage post
 
 function displayPost(Post $post){
+
 	$user = $post->getUser();
 	echo "<div id=\"postelement\" class=\"container\">";
 	echo "<div class=\"container\">";
@@ -42,9 +43,9 @@ function displayPost(Post $post){
 	echo "<p>".$post->getTextPost()."</p>";
 
 	echo "</div>";
-	echo "<div class=\"row\">";
+	/*echo "<div class=\"row\">";
 	echo "<p>Le 23/12/2020 à 12h23:43</p>";
-	echo "</div>";
+	echo "</div>";*/
 	echo "<div class=\"row justify-content-center\" id=\"commentlike\">";
 	echo "<div class=\"btn btn-lg \">";
 
@@ -56,6 +57,7 @@ function displayPost(Post $post){
 	echo "Like";
 	echo "</a>";
 	echo "</div>";
+
 	echo "<div class=\"btn btn-lg \">";
 	echo "<a href=\"comments.php\">";
 	echo "<svg width=\"1em\" height=\"1em\" viewBox=\"0 0 16 16\" class=\"bi bi-chat-dots\" fill=\"currentColor\" xmlns=\"http://www.w3.org/2000/svg\">";
@@ -71,16 +73,18 @@ function displayPost(Post $post){
 	
 }
 
+function likeProcess(Post $post) {
+	// Traitement Likes
 
+	$bdd = BDconnect();
+	$tmpuser = $_SESSION['User'];
+	$req = $bdd->prepare("INSERT INTO LikePost (idUser, idPostCommented) VALUES (?,?)");
+	$req->execute(array($tmpuser->getIdUser(),);
 
-
-
-
-
-
-
-
-
+	$bdd = BDconnect();
+	$tmpuser = $_SESSION['User'];
+	$req = $bdd->prepare("INSERT INTO LikePost (idUser, idPostCommented) VALUES (?,?)");
+	$req->execute(array($tmpuser->getIdUser(),);
 
 
 ?>
