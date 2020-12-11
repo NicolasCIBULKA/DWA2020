@@ -73,7 +73,7 @@ function displayPost(Post $post){
 	
 }
 
-function likeProcess(Post $post) {
+/*function likeProcess(Post $post) {
 	// Traitement Likes
 
 	$bdd = BDconnect();
@@ -87,4 +87,4 @@ function likeProcess(Post $post) {
 	$req->execute(array($tmpuser->getIdUser(),);
 
 
-?>
+?>*/
