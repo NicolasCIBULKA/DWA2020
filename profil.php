@@ -1,6 +1,7 @@
 <?php 
 require_once("class/User.class.php");
 include("functions/function.inc.php");
+
 	session_start();
 	if(empty($_SESSION["User"])){
 		header("Location:index.php");
@@ -9,6 +10,7 @@ include("functions/function.inc.php");
 		$_GET["user"] = $_SESSION["User"]->getIdUser();
 	}
  ?>
+ <?php require_once("functions/function.inc.php"); ?>
 <?php include("templates/head.inc.php"); ?>
 <body>
 <?php include("templates/header.inc.php"); ?>
@@ -41,7 +43,7 @@ include("functions/function.inc.php");
 				</div>
 				<div class="row">
 					<div class="col-3 , col-sm-2 , rounded mx-auto d-block">
-						<img class="img-fluid , rounded-circle" id="profile_pic" src="./images/avatar-2.png" alt="Profile Picture"/>
+						<img class="img-fluid , dp-rounded-circle , rounded-circle" id="profile_pic" src="<?php displayProfilePicture($_SESSION['User']) ?>" alt="Profile Picture"/>
 					</div>
 				</div>
 
