@@ -52,6 +52,20 @@ h1 {
 	margin-bottom: 1em;
 }
 
+/* erreur 404 */
+
+.error404{
+	margin-top: 5em;
+	margin-bottom: 5em;
+}
+
+.error404 h2{
+	font-size: 5em;
+}
+
+.error404 p{
+	font-size: 1em;
+}
 /* Style menu navigation */
 #nav {
 	font-size: 3em;

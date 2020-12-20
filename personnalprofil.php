@@ -5,9 +5,6 @@ include("functions/function.inc.php");
 	if(empty($_SESSION["User"])){
 		header("Location:index.php");
 	}
-	if(empty($_GET["user"]) || isset($_GET["user"])){
-		$_GET["user"] = $_SESSION["User"]->getIdUser();
-	}
  ?>
 <?php include("templates/head.inc.php"); ?>
 <body>
