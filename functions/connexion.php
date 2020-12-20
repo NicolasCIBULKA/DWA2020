@@ -28,7 +28,7 @@ if(isset($_POST['identifiant']) && isset($_POST['mdp'])){
 		$row = $req->fetch();
 
 		// On crée une variable de session pour l'utilisateur et on remplit les données
-		$_SESSION["User"] = new User($row[0], $row[1], $row[5]);
+		$_SESSION["User"] = new User($row[0], $row[1], $row[5] , $row[2] , $row[3] , $row[4] , $row[7], $row[6]);
 		// -----------
 		// 	  TODO
 		// -----------

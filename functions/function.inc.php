@@ -73,6 +73,24 @@ function displayPost(Post $post){
 	
 }
 
+function displayProfilePicture(User $user){
+
+	$filename = $user->getIcon();
+	if ($filename) {
+		echo "./icons/".$filename;
+	}
+	else{
+		echo "./icons/avatar-2.png";
+	}
+}
+
+function deleteImage(User $user){
+
+	foreach (glob("./icons/".$user->getIdUser().".*") as $filename) {
+		unlink($filename);
+	}
+}
+
 /*function likeProcess(Post $post) {
 	// Traitement Likes
 

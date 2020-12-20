@@ -19,12 +19,17 @@
   	private $_posts;
 
 # User's constructor
-  	public function __construct($idUser,$username,$password){
-    	$this->_idUser = $idUser;
-    	$this->_username = $username;
-    	$this->_password = $password;
-  	}
+  	public function __construct($idUser,$username,$password,$firstname,$lastname,$birthdate,$mail,$icon){
+      $this->_idUser = $idUser;
+      $this->_username = $username;
+      $this->_password = $password;
+      $this->_firstName = $firstname;
+      $this->_lastName = $lastname;
+      $this->_birthdate = $birthdate;
+      $this->_mail = $mail;
+      $this->_icon = $icon;
 
+    }
 # _idUser's Accessor and Mutator
 	public function setIdUser($value) {
     	$this->_idUser = $value;

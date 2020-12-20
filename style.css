@@ -353,11 +353,15 @@ border:1px solid #e0e0e0;
 
 }
 
-
 .orangecolor{
     color: orange;
 }
 
 .orangecolor:hover {
   color: orange;
+}
+
+.dp-rounded-circle{
+width:160px;
+height:160px;
 }
