@@ -6,8 +6,8 @@ include("functions/function.inc.php");
 	if(empty($_SESSION["User"])){
 		header("Location:index.php");
 	}
-	if(empty($_GET["user"]) || isset($_GET["user"])){
-		$_GET["user"] = $_SESSION["User"]->getIdUser();
+	if($_GET["iduser"] == $_SESSION["User"]->getIdUser()){
+		header("Location:personnalprofil.php");
 	}
  ?>
  <?php require_once("functions/function.inc.php"); ?>
@@ -32,10 +32,6 @@ include("functions/function.inc.php");
 
 			<div class="container border-bottom">
 			<!-- photo de profil generique à modifier -->
-			<?php 
-			$bdd = BDConnect();
-			$req =$bdd->prepare("SELECT * FROM ")
-			 ?>
 				<div class="row">
 					<div class="col">
 						<img  class="img-fluid" id="banner" src="./images/banner-orange.png" alt="profile banner"/>

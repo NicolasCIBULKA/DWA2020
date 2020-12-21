@@ -27,10 +27,6 @@ include("functions/function.inc.php");
 
 			<div class="container border-bottom">
 			<!-- photo de profil generique à modifier -->
-			<?php 
-			$bdd = BDConnect();
-			$req =$bdd->prepare("SELECT * FROM ")
-			 ?>
 				<div class="row">
 					<div class="col">
 						<img  class="img-fluid" id="banner" src="./images/banner-orange.png" alt="profile banner"/>
@@ -38,46 +34,53 @@ include("functions/function.inc.php");
 				</div>
 				<div class="row">
 					<div class="col-3 , col-sm-2 , rounded mx-auto d-block">
-						<img class="img-fluid , rounded-circle" id="profile_pic" src="./images/avatar-2.png" alt="Profile Picture"/>
+						<img class="img-fluid , rounded-circle" id="profile_pic" src="<?php displayProfilePicture($_SESSION["User"]); ?>"alt="Profile Picture " />
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="col">
-						<h2>Pseudo</h2>
-						<p>@identifiant</p>
-						<h3>Bio</h3>
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam corporis, omnis tempora nam voluptates cum qui consectetur ipsum, tempore numquam autem necessitatibus harum hic in rerum molestias atque, veniam minus.
-						Recusandae at facere unde quas cum, magnam, saepe minima tempore corporis, non odit iusto, odio consequuntur! Quisquam totam, similique, doloribus nemo earum possimus pariatur, atque id eaque placeat quia dolore.</p>
+						<h2><?php echo $_SESSION["User"]->getUserName() ?></h2>
+						<p>@<?php echo $_SESSION["User"]->getIdUser() ?></p>
 					</div>
 				</div>
 
 			</div>
 
 			<div class="container">
+				<?php 
+					// affichage des posts et like de l'utilisateur courant 
+					//echo $_SESSION["User"]->getIdUser();
+					$bdd = BDconnect();
+					$req = $bdd->prepare("SELECT * FROM Post WHERE id_writer = ? UNION SELECT id_post, id_writer, text, url_image, datePost FROM Post NATURAL JOIN LikePost WHERE id_user = ?");
+					$req->execute(array($_SESSION["User"]->getIdUser(), $_SESSION["User"]->getIdUser()));
+					//echo $req->rowCount();
+					while($row = $req->fetch()){
+						$req2 = $bdd->prepare("SELECT * FROM Users WHERE id_user = ?");
+						$req2->execute(array($row[1]));
+						$rowuser = $req2->fetch();
+						echo "<div class=\"container postelement\">";
+						echo "<div class=\"row\">";
+						echo "<div class=\"col\">";
 
-				<div class="row">
-					<div class="col">
-				<!-- A remplacer par les Post de l'utilisateur avec la classe Post -->
-						<article>
-							<h2>Post 1</h2>
-							<p> Post: Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam corporis, omnis tempora nam voluptates cum qui consectetur ipsum, tempore numquam autem necessitatibus harum hic in rerum molestias atque, veniam minus.
-							Recusandae at facere unde quas cum, magnam, saepe minima tempore corporis, non odit iusto, odio consequuntur! Quisquam totam, similique, doloribus nemo earum possimus pariatur, atque id eaque placeat quia dolore.</p>
-						</article>
+						if($row[1] != $_SESSION["User"]->getIdUser()){
+							echo "<p class=\"font-italic\">".$_SESSION["User"]->getIdUser()." à aimé le post suivant</p>";
+						}
+						echo "<div>";
+						echo "<a class=\"nameidpost\" href=\"profil.php?iduser=".$row[1]."\">".$rowuser[1]." - @".$row[1]."</a>";
+						echo "<p>".$row[2]."</p>";
+						if(!is_null($row[3])){
+							echo "<img class=\"rounded mx-auto d-block\"src=\"".$row[3]."\" width=\"30%\" alt=\"post image\">";
+						}
 
-						<article>
-							<h2>Post 2</h2>
-							<p> Post: Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam corporis, omnis tempora nam voluptates cum qui consectetur ipsum, tempore numquam autem necessitatibus harum hic in rerum molestias atque, veniam minus.
-							Recusandae at facere unde quas cum, magnam, saepe minima tempore corporis, non odit iusto, odio consequuntur! Quisquam totam, similique, doloribus nemo earum possimus pariatur, atque id eaque placeat quia dolore.</p>
-						</article>
-
-						<article>
-							<h2>Post 3</h2>
-							<p> Post: Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam corporis, omnis tempora nam voluptates cum qui consectetur ipsum, tempore numquam autem necessitatibus harum hic in rerum molestias atque, veniam minus.
-							Recusandae at facere unde quas cum, magnam, saepe minima tempore corporis, non odit iusto, odio consequuntur! Quisquam totam, similique, doloribus nemo earum possimus pariatur, atque id eaque placeat quia dolore.</p>
-						</article>
-					</div>
-				</div>
+						// like et commentaire à ajouter
+						echo "</div>";
+						echo "</div>";
+						echo "</div>";
+						echo "</div>";
+					}
+				?>
+				
 
 			</div>
 	

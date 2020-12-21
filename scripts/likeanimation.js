@@ -7,12 +7,12 @@ function likeMethode ($likee) {
 
 if ($('#'+$likee).attr('fill') == 'white'){
 
-	$('#'+$likee).attr({ fill: "red" });
-	$('#'+$likee).css({ fill: "red" });
-	$('#'+$likee).css({ stroke: "red" });
+	$('#'+$likee).attr({ fill: "orange" });
+	$('#'+$likee).css({ fill: "orange" });
+	$('#'+$likee).css({ stroke: "orange" });
 	}
 
-	else if ($('#'+$likee).attr('fill') == 'red'){
+	else if ($('#'+$likee).attr('fill') == 'orange'){
 
 		$('#'+$likee).attr("fill", "white" ); 
 		$('#'+$likee).css({ fill: "white" });
