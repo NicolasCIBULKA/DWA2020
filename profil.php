@@ -1,9 +1,16 @@
 <?php 
+require_once("class/User.class.php");
+include("functions/function.inc.php");
+
 	session_start();
 	if(empty($_SESSION["User"])){
 		header("Location:index.php");
 	}
+	if($_GET["iduser"] == $_SESSION["User"]->getIdUser()){
+		header("Location:personnalprofil.php");
+	}
  ?>
+ <?php require_once("functions/function.inc.php"); ?>
 <?php include("templates/head.inc.php"); ?>
 <body>
 <?php include("templates/header.inc.php"); ?>
@@ -23,18 +30,8 @@
 
 			
 
-			<div class="container , border-bottom">
-			<!-- Image de Banniere et photo de profile generique à modifier -->
-				<div class="row" >
-					
-					<!--<form action="research.php" method="get">
-						<div class="form-group">
-							<label for="iduser">Recherche de Personnes:</label>
-							<input type="text" id="iduser" name="iduser">
-							<input type="submit" value="Rechercher">
-						</div>
-					</form>-->
-				</div>
+			<div class="container border-bottom">
+			<!-- photo de profil generique à modifier -->
 				<div class="row">
 					<div class="col">
 						<img  class="img-fluid" id="banner" src="./images/banner-orange.png" alt="profile banner"/>
@@ -42,7 +39,7 @@
 				</div>
 				<div class="row">
 					<div class="col-3 , col-sm-2 , rounded mx-auto d-block">
-						<img class="img-fluid , rounded-circle" id="profile_pic" src="./images/avatar-2.png" alt="Profile Picture"/>
+						<img class="img-fluid , dp-rounded-circle , rounded-circle" id="profile_pic" src="<?php displayProfilePicture($_SESSION['User']) ?>" alt="Profile Picture"/>
 					</div>
 				</div>
 

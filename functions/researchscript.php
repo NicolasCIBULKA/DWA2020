@@ -24,7 +24,7 @@ if(isset($_GET["iduser"])){
 					echo "<div class=\"row justify-content-center\">";
 					echo "<div class=\"col-6 col-sm-8 col-xs-12  d-flex flex-row bd-highlight mb-2\">";
 					echo "<img class=\"rounded-circle p-2 bd-highlight\" src=\"images/avatar-2.png\" width=\"80px\" height=\"80px\" alt=\"\">";
-					echo "<a href=\"\" class=\"p-2 bd-highlight\">";
+					echo "<a href=\"profil.php?user=".$user->getIdUser()."\" class=\"p-2 bd-highlight\">";
 					echo "<p>".$user->getUserName()."</p>";
 					echo "<p class=\"font-italic\">@".$user->getIdUser()."</p>";
 					echo "</a>";

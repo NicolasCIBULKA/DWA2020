@@ -52,6 +52,20 @@ h1 {
 	margin-bottom: 1em;
 }
 
+/* erreur 404 */
+
+.error404{
+	margin-top: 5em;
+	margin-bottom: 5em;
+}
+
+.error404 h2{
+	font-size: 5em;
+}
+
+.error404 p{
+	font-size: 1em;
+}
 /* Style menu navigation */
 #nav {
 	font-size: 3em;
@@ -229,11 +243,13 @@ h2.slogant {
 
 }
 
+.nameidpost{
+	font-size: 1.5em;
+}
 /* Style fil d'actualité*/
 
 /* Style page commentaires */
 .soustitrecommentaires {
-
 	margin-top: 1em;
 	padding-top: 1em;
 }
@@ -353,11 +369,15 @@ border:1px solid #e0e0e0;
 
 }
 
-
 .orangecolor{
     color: orange;
 }
 
 .orangecolor:hover {
   color: orange;
+}
+
+.dp-rounded-circle{
+width:160px;
+height:160px;
 }
