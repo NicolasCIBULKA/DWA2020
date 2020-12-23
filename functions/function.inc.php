@@ -44,7 +44,7 @@ function displayPost(Post $post) {
 
 	echo "</div>";
 	echo "<div class=\"row\">";
-	echo "<p>Le".date_format($user->getDatePost(), 'Y-m-d à H:i:s')." à 12h23:43</p>";
+	echo "<p>Le".date_format($user->getDatePost(), 'Y-m-d à H:i:s')."</p>";
 	echo "</div>";
 	echo "<div class=\"row justify-content-center\" id=\"commentlike\">";
 	echo "<div class=\"btn btn-lg \">";
@@ -107,4 +107,23 @@ function displayComment(Comment $comment, User $user) {
 	echo "</div>";
 	echo "</div>";
 }
+
+function displayProfilePicture(User $user) {
+
+    $filename = "./images/userphoto/".$user->getIcon();
+    if ($filename) {
+        echo $filename;
+    }
+    else{
+        echo "./images/avatar-2.png";
+    }
+}
+
+function deleteImage(User $user) {
+
+    foreach (glob("./images/userphoto/".$user->getIdUser().".*") as $filename) {
+        unlink($filename);
+    }
+}
+
 ?>
