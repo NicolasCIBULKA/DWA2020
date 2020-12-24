@@ -4,7 +4,7 @@ $("#iduserbtn").click(function() {
 	$.ajax({
 		url: './functions/researchscript.php',
 		type: 'GET',
-		dataType: 'html',
+		dataType: 'text',
 		data: {"iduser": $('#iduser').val()},
 	})
 	.done(function(response) {

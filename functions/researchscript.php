@@ -12,7 +12,7 @@ if(isset($_GET["iduser"])){
 			}
 			else{
 				while(($row = $req->fetch()) && ($i < 20)){
-					$user = new User($row[0], $row[1], $row[5]);
+					$user = new User($row[0], $row[1], $row[5] , $row[2] , $row[3] , $row[4] , $row[7], $row[6]);
 					
 					if (is_null($row[6])) {
 						$user->setIcon("icons/avatar-2.png");

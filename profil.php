@@ -6,16 +6,31 @@ include("functions/function.inc.php");
 	if(empty($_SESSION["User"])){
 		header("Location:index.php");
 	}
-	if($_GET["iduser"] == $_SESSION["User"]->getIdUser()){
+	if($_GET["user"] == $_SESSION["User"]->getIdUser()){
 		header("Location:personnalprofil.php");
 	}
+	else{
+		$bdd = BDconnect();
+		$req = $bdd->prepare("SELECT * FROM Users WHERE id_user = ?");
+		$req->execute(array($_GET["user"]));
+		if($req->rowCount() != 0){
+			$row = $req->fetch();
+			$researchuser = new User($row[0], $row[1], $row[5] , $row[2] , $row[3] , $row[4] , $row[7], $row[6]);
+		}
+		else{
+			header("Location:feed.php");
+		}
+	}
+	$follower = $_SESSION["User"]->getIdUser();
+	$followed = $researchuser->getIdUser();
+
  ?>
  <?php require_once("functions/function.inc.php"); ?>
 <?php include("templates/head.inc.php"); ?>
 <body>
 <?php include("templates/header.inc.php"); ?>
 <?php include("templates/nav.inc.php"); ?>
-<a class="btn rounded-circle researchbutton" href="research.php"title="Rechercher un utilisateur"><svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-search" fill="white" xmlns="http://www.w3.org/2000/svg" > 
+<a class="btn rounded-circle researchbutton" href="research.php" title="Rechercher un utilisateur"><svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-search" fill="white" xmlns="http://www.w3.org/2000/svg" > 
 					  <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
 					  <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/></svg>
 </a>
@@ -28,8 +43,6 @@ include("functions/function.inc.php");
 
 		<div class="row justify-content-center">
 
-			
-
 			<div class="container border-bottom">
 			<!-- photo de profil generique à modifier -->
 				<div class="row">
@@ -39,46 +52,60 @@ include("functions/function.inc.php");
 				</div>
 				<div class="row">
 					<div class="col-3 , col-sm-2 , rounded mx-auto d-block">
-						<img class="img-fluid , dp-rounded-circle , rounded-circle" id="profile_pic" src="<?php displayProfilePicture($_SESSION['User']) ?>" alt="Profile Picture"/>
+						<img class="img-fluid , rounded-circle" id="profile_pic" src="<?php displayProfilePicture($researchuser); ?>" alt="Profile Picture " />
 					</div>
 				</div>
 
 				<div class="row">
-					<div class="col">
-						<h2>Pseudo</h2>
-						<p>@identifiant</p>
-						<h3>Bio</h3>
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam corporis, omnis tempora nam voluptates cum qui consectetur ipsum, tempore numquam autem necessitatibus harum hic in rerum molestias atque, veniam minus.
-						Recusandae at facere unde quas cum, magnam, saepe minima tempore corporis, non odit iusto, odio consequuntur! Quisquam totam, similique, doloribus nemo earum possimus pariatur, atque id eaque placeat quia dolore.</p>
+					<div class="col-6">
+						<h2><?php echo $researchuser->getUserName() ?></h2>
+						<p>@<?php echo $researchuser->getIdUser() ?></p>
+						<input type="hidden" id="follower" value=<?php echo $follower ?>>
+						<input type="hidden" id="followed" value=<?php echo $followed ?>>
+					</div>
+					<div class="col-6 text-right">
+						<button class="btn btnabo">S'abonner</button>
 					</div>
 				</div>
 
 			</div>
 
 			<div class="container">
+				<?php 
+					// affichage des posts et like de l'utilisateur courant 
+					//echo $_SESSION["User"]->getIdUser();
+					$bdd = BDconnect();
+					$req = $bdd->prepare("(SELECT * FROM Post WHERE id_writer = ?) UNION (SELECT id_post, id_writer, text, url_image, datePost FROM Post NATURAL JOIN LikePost WHERE id_user = ?) ORDER BY id_post DESC");
+					$req->execute(array($researchuser->getIdUser(), $researchuser->getIdUser()));
+					//echo $req->rowCount();
+					while($row = $req->fetch()){
+						$req2 = $bdd->prepare("SELECT * FROM Users WHERE id_user = ?");
+						$req2->execute(array($row[1]));
+						$rowuser = $req2->fetch();
+						echo "<div class=\"container postelement\">";
+						echo "<div class=\"row\">";
+						echo "<div class=\"col\">";
 
-				<div class="row">
-					<div class="col">
-				<!-- A remplacer par les Post de l'utilisateur avec la classe Post -->
-						<article>
-							<h2>Post 1</h2>
-							<p> Post: Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam corporis, omnis tempora nam voluptates cum qui consectetur ipsum, tempore numquam autem necessitatibus harum hic in rerum molestias atque, veniam minus.
-							Recusandae at facere unde quas cum, magnam, saepe minima tempore corporis, non odit iusto, odio consequuntur! Quisquam totam, similique, doloribus nemo earum possimus pariatur, atque id eaque placeat quia dolore.</p>
-						</article>
+						if($row[1] != $researchuser->getIdUser()){
+							echo "<p class=\"font-italic\">".$researchuser->getIdUser()." à aimé le post suivant</p>";
+						}
+						echo "<div>";
+						echo "<a class=\"nameidpost\" href=\"profil.php?user=".$row[1]."\">".$rowuser[1]." - @".$row[1]."</a>";
+						$date = date_create($row[4]);
+						echo "<p> le ".date_format($date, 'Y-m-d \à H:i:s')."</p>";
+						echo "<p>".$row[2]."</p>";
+						if(!is_null($row[3])){
+							echo "<img class=\"rounded mx-auto d-block\"src=\"".$row[3]."\" width=\"30%\" alt=\"post image\">";
+						}
 
-						<article>
-							<h2>Post 2</h2>
-							<p> Post: Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam corporis, omnis tempora nam voluptates cum qui consectetur ipsum, tempore numquam autem necessitatibus harum hic in rerum molestias atque, veniam minus.
-							Recusandae at facere unde quas cum, magnam, saepe minima tempore corporis, non odit iusto, odio consequuntur! Quisquam totam, similique, doloribus nemo earum possimus pariatur, atque id eaque placeat quia dolore.</p>
-						</article>
-
-						<article>
-							<h2>Post 3</h2>
-							<p> Post: Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam corporis, omnis tempora nam voluptates cum qui consectetur ipsum, tempore numquam autem necessitatibus harum hic in rerum molestias atque, veniam minus.
-							Recusandae at facere unde quas cum, magnam, saepe minima tempore corporis, non odit iusto, odio consequuntur! Quisquam totam, similique, doloribus nemo earum possimus pariatur, atque id eaque placeat quia dolore.</p>
-						</article>
-					</div>
-				</div>
+						// like et commentaire à ajouter
+						echo "</div>";
+						echo "</div>";
+						echo "</div>";
+						echo "</div>";
+					}
+				?>
+				
 
 			</div>
 	
@@ -103,7 +130,7 @@ include("functions/function.inc.php");
 		</div>
 
 </div>
-
+<script type="text/javascript" src="./scripts/follow.js"></script>
 <?php include("templates/footer.inc.php"); ?>
 </body>
 </html>

@@ -43,8 +43,8 @@
 	}
 	if(strlen($_POST["message"]) <= 300){
 		$tmpuser = $_SESSION['User'];
-		$req = $bdd->prepare("INSERT INTO Post ( id_writer, text, url_image) VALUES ( ?, ?, ?)");
-		$req->execute(array( $tmpuser->getIdUser(), $_POST["message"] , $file));
+		$req = $bdd->prepare("INSERT INTO Post ( id_writer, text, url_image, datePost) VALUES ( ?, ?, ?, ?)");
+		$req->execute(array( $tmpuser->getIdUser(), $_POST["message"] , $file, date("Y-m-d H:i:s")));
 		RequestClose($req);
 		echo $_FILES["image"]["name"];
 		header('Location:../feed.php');

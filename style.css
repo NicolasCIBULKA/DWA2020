@@ -190,6 +190,19 @@ h2.slogant {
   border-radius: 1.563rem;
 }
 
+.btnabo{
+	background-color: orange;
+	color: white;
+}
+
+.btnabo:hover {
+	background-color: orange;
+	color: white;
+}
+.btnabo:active{
+	background-color: orangered;
+}
+
 .createaccountbtn{
 	color: #fff;
 	background-color: orange;
