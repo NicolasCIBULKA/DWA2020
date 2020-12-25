@@ -48,6 +48,7 @@
          			$requete="UPDATE users SET url_icon = :icon WHERE id_user = :id_user;";
 					$req = $bdd->prepare($requete);
 					$req->execute(array(':icon' => $_SESSION["User"]->getIdUser().".".$extension, ':id_user' => $_SESSION["User"]->getIdUser()));
+					$_SESSION["User"]->setIcon($_SESSION["User"]->getIdUser().".".$extension);
          		} 
       		}
   		 }
