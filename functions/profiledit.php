@@ -2,6 +2,9 @@
 	require_once("function.inc.php");
 	require_once("../class/User.class.php");
 	session_start();
+	if(empty($_SESSION["User"])){
+		header("Location:index.php");
+	}
 
 	$bdd = BDconnect();
 
@@ -9,9 +12,6 @@
 		header("Location:index.php");
 	}
 	else{
-
-
-
 
 	if(!empty($_POST["pseudo"])){
 		$_SESSION["User"]->setUserName($_POST["pseudo"]);
@@ -42,13 +42,17 @@
    		if($_FILES['image']['size'] <= $tailleMax) {
    			$extension = strtolower(substr(strrchr($_FILES['image']['name'], '.'), 1));
       		if(in_array($extension, $extensionsValides)) {
-         		$chemin = "../icons/".$_SESSION["User"]->getIdUser().".".$extension;
-         		$image = move_uploaded_file($_FILES['image']['tmp_name'], $chemin);
+         		$chemin = "icons/".$_SESSION["User"]->getIdUser().".".$extension;
+         		$image = move_uploaded_file($_FILES['image']['tmp_name'],"../".$chemin);
          		if($image) {
-         			$requete="UPDATE users SET url_icon = :icon WHERE id_user = :id_user;";
+         			$requete="UPDATE Users SET url_icon = :icon WHERE id_user = :id_user;";
 					$req = $bdd->prepare($requete);
 					$req->execute(array(':icon' => $_SESSION["User"]->getIdUser().".".$extension, ':id_user' => $_SESSION["User"]->getIdUser()));
+<<<<<<< HEAD
 					$_SESSION["User"]->setIcon($_SESSION["User"]->getIdUser().".".$extension);
+=======
+					$_SESSION["User"]->setIcon($chemin);
+>>>>>>> ebc01e411f46f02e4f2063f25738ab0e3f46f2a2
          		} 
       		}
   		 }

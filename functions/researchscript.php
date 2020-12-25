@@ -12,18 +12,20 @@ if(isset($_GET["iduser"])){
 			}
 			else{
 				while(($row = $req->fetch()) && ($i < 20)){
-					$user = new User($row[0], $row[1], $row[5]);
+					$user = new User($row[0], $row[1], $row[5] , $row[2] , $row[3] , $row[4] , $row[7], $row[6]);
 					
 					if (is_null($row[6])) {
-						$user->setIcon("icons/avatar-2.png");
+						$user->setIcon("avatar-2.png");
+						$icon = "./icons/avatar-2.png";
 					}
 					else{
 						$user->setIcon($row[6]);
+						$icon = "./icons/".$row[6];
 					}
 
 					echo "<div class=\"row justify-content-center\">";
 					echo "<div class=\"col-6 col-sm-8 col-xs-12  d-flex flex-row bd-highlight mb-2\">";
-					echo "<img class=\"rounded-circle p-2 bd-highlight\" src=\"images/avatar-2.png\" width=\"80px\" height=\"80px\" alt=\"\">";
+					echo "<img class=\"rounded-circle p-2 bd-highlight\" src=".$icon." width=\"80px\" height=\"80px\" alt=\"Profile picture\">";
 					echo "<a href=\"profil.php?user=".$user->getIdUser()."\" class=\"p-2 bd-highlight\">";
 					echo "<p>".$user->getUserName()."</p>";
 					echo "<p class=\"font-italic\">@".$user->getIdUser()."</p>";

@@ -17,7 +17,6 @@
 			<div class="form-group">
 				<label for="iduser">Recherche de Personnes:</label>
 				<input type="text" id="iduser" name="iduser">
-							<!--<input type="submit" id="iduserbtn" class="btn btn-primary" value="Rechercher">-->
 				
 				<button id="iduserbtn" class="btn btn-primary">Rechercher</button>						
 			</div>
@@ -66,6 +65,7 @@
 		}
 		*/
 	?>
+	<!-- 
 	<div class="row justify-content-center">
 		<div class="col-6 col-sm-8 col-xs-12  d-flex flex-row bd-highlight mb-2">
 			<img class="rounded-circle p-2 bd-highlight" src="images/avatar-2.png" width="80px" height="80px" alt="">
@@ -76,7 +76,7 @@
 				
 		</div>
 	</div>
-	
+	-->
 	
 </div>
 
