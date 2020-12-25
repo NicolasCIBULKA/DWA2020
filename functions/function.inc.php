@@ -120,7 +120,7 @@ function displayProfilePicture(User $user){
 
 function deleteImage(User $user){
 
-	$files=glob("../icons/".$user->getIdUser().".*"));
+	$files=glob("../icons/".$user->getIdUser().".*");
     foreach ($files as $filename) {
         unlink($filename);
     }
