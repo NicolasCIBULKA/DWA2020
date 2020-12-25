@@ -89,8 +89,10 @@ include("functions/function.inc.php");
 						if($row[1] != $researchuser->getIdUser()){
 							echo "<p class=\"font-italic\">".$researchuser->getIdUser()." à aimé le post suivant</p>";
 						}
+						$user = new User($rowuser[0], $rowuser[1], $rowuser[5] , $rowuser[2] , $rowuser[3] , $rowuser[4] , $rowuser[7], $rowuser[6]);
+						$icon = returnpp($user);
 						echo "<div>";
-						echo "<a class=\"nameidpost\" href=\"profil.php?user=".$row[1]."\">".$rowuser[1]." - @".$row[1]."</a>";
+						echo "<a class=\"nameidpost\" href=\"profil.php?user=".$row[1]."\"><img class=\"rounded-circle p-2 bd-highlight\" width=\"80px\" height=\"80px\" src=\"".$icon."\" alt=\"Profil Picture\">".$rowuser[1]." - @".$row[1]."</a>";
 						$date = date_create($row[4]);
 						echo "<p> le ".date_format($date, 'Y-m-d \à H:i:s')."</p>";
 						echo "<p>".$row[2]."</p>";

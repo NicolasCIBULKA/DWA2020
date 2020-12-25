@@ -119,6 +119,16 @@ function displayProfilePicture(User $user){
     }
 }
 
+function returnpp(User $user){
+	$filename = $user->getIcon();
+    if ($filename) {
+        return ("./icons/".$filename);
+    }
+    else{
+        return "./icons/avatar-2.png";
+    }
+}
+
 function deleteImage(User $user){
 
     foreach (glob($user->getIdUser().".*") as $filename) {

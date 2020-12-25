@@ -1,6 +1,7 @@
 $("#iduserbtn").click(function() {
 	//var iduser = $("#iduser").text();
 	console.log($("#iduser").val());
+	$("#researchelts").text(" ");
 	$.ajax({
 		url: './functions/researchscript.php',
 		type: 'GET',
