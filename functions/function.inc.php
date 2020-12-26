@@ -107,6 +107,8 @@ function displayComment(Comment $comment, User $user) {
 	echo "</div>";
 	echo "</div>";
 }
+
+
 function displayProfilePicture(User $user){
 
     $filename = "./icons/".$user->getIcon();
@@ -117,6 +119,18 @@ function displayProfilePicture(User $user){
         echo "./icons/avatar-2.png";
     }
 }
+
+function returnpp(User $user){
+
+    $filename = "./icons/".$user->getIcon();
+    if ($user->getIcon()) {
+        return $filename;
+    }
+    else{
+        return "./icons/avatar-2.png";
+    }
+}
+
 
 function deleteImage(User $user){
 
