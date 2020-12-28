@@ -32,17 +32,21 @@ function RequestClose($req){
 function displayPost(Post $post) {
 
 	$user = $post->getUser();
+	$urlprofilpicture = displayProfilePicture($user);
 	echo "<div id=\"postelement\" class=\"container\">";
 	echo "<div class=\"container\">";
 	echo "<div class=\"row\">";
+	echo "<img src=$urlprofilpicture alt=\"Profil utilisateur\" class=\"img-circle\">";
 	echo "<p id=\"pseudopostelement\">".$user->getUsername()."</p>";
 	echo "<p id=\"idpostelement\"> @".$user->getIdUser()."</p>";
 	echo "</div>";
 
 	echo "<div id=\"textpostelement\" class=\"row\">";
 	echo "<p>".$post->getTextPost()."</p>";
-
 	echo "</div>";
+	
+	echo "<img src=$post->getImagePost() alt=\"Image post\" class=\"img-responsive\">";
+
 	echo "<div class=\"row\">";
 	echo "<p>Le".date_format($user->getDatePost(), 'Y-m-d à H:i:s')."</p>";
 	echo "</div>";
@@ -75,15 +79,24 @@ function displayPost(Post $post) {
 
 function displayComment(Comment $comment, User $user) {
 	$user = $post->getUser();
+	$urlprofilpicture = displayProfilePicture($user);
 	echo "<div id=\"postelement\" class=\"container\">";
 	echo "<div class=\"container\">";
 	echo "<div class=\"row\">";
+	echo "<img src=$urlprofilpicture alt=\"Profil utilisateur\" class=\"img-circle\">";
 	echo "<p id=\"pseudopostelement\">".$user->getUsername()."</p>";
 	echo "<p id=\"idpostelement\"> @".$user->getIdUser()."</p>";
 	echo "</div>";
 
 	echo "<div id=\"textpostelement\" class=\"row\">";
 	echo "<p>".$comment->getTextComment()."</p>";
+
+	echo "</div>";
+	echo "<div class=\"row\">";
+	echo "<p>Le".date_format($user->getDateComment(), 'Y-m-d à H:i:s')."</p>";
+	echo "</div>";
+	echo "<div class=\"row justify-content-center\" id=\"commentlike\">";
+	echo "<div class=\"btn btn-lg \">";
 
 	echo "<a href=\"\">";
 

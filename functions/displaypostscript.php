@@ -29,7 +29,7 @@ if(isset($_GET["iduser"])) {
 					$comWriterReq = $bdd->prepare("SELECT * FROM User where idUser = ?");
 					$comWriterReq->execute($comRow[1]);
 					$comWriterRow = $comWriterReq->fetch();
-					$comment = new Comment($comRow[3],false);
+					$comment = new Comment($comRow[3],false,$comRow[4]);
 					$commentWriter = new User($comWriterRow[0],$comWriterRow[1],$comWriterRow[5]);
 					displayComment($comment,$commentWriter);
 					$comIndex++;

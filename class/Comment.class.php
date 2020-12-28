@@ -3,13 +3,14 @@
 class Comment{
 	private $_textComment;
 	private $_previousComment;
+	private $_dateComment;
 
 
-	public function __construct($textComment,$previousComment){
+	public function __construct($textComment,$previousComment,$dateComment){
 		
 		$this->setTextComment($textComment);
 		$this->setPreviousComment($previousComment);
-
+		$this->setDateComment($dateComment);
 	}
 	public function getTextComment(){
 		return $this->_textComment;
@@ -17,6 +18,10 @@ class Comment{
 
 	public function getPreviousComment(){
 		return $this->_previousComment;
+	}
+
+	public function getDateComment(){
+		return $this->_dateComment;
 	}
 
 	public function setTextComment($textComment){
@@ -30,6 +35,10 @@ class Comment{
 	
 	public function setPreviousComment($previousComment){
 		$this->_previousComment;
+	}
+
+	public function setDateComment($dateComment){
+		$this->_dateComment;
 	}
 }
 
