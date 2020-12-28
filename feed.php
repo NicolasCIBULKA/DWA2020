@@ -4,6 +4,8 @@
  -->
 <?php require_once("functions/function.inc.php"); ?>
 <?php require_once("class/User.class.php"); ?>
+<?php require_once("class/Post.class.php"); ?>
+<?php require_once("class/Like.class.php"); ?>
 <?php include("templates/head.inc.php"); ?>
 <?php 
 	session_start();
@@ -184,7 +186,7 @@
 		</div>
 	</div>
 	
-	<?php //displayPost(); ?>
+	<?php displayAllPost(); ?>
 	<script type="text/javascript" src="./scripts/likeanimation.js"></script>
 
 	<?php include ("templates/footer.inc.php"); ?>

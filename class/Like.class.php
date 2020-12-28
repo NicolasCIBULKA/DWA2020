@@ -12,8 +12,8 @@ class Like{
 	
 	public function setLiked($liked){
 
-		array_push($_liked,$id_user);
-
+	$this->_liked=$liked;
+	
 	}
 	
 	public function setNumberLikes($numberLikes){
@@ -58,7 +58,7 @@ class Like{
 		unset($_liked[$key]);
 	}
 
-	function addLike($post,$id_user){
+	function addLike($id_user){
 	array_push($this->_liked, $id_user);
 	}
 }
