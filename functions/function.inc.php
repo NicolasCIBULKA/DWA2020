@@ -73,12 +73,13 @@ function displayPost(Post $post) {
 
 function displayComment(Comment $comment, User $user) {
 	
-	$user = $post->getUser();
+//	$user = $post->getUser();
 	$urlprofilpicture = displayProfilePicture($user);
 	echo "<div id=\"postelement\" class=\"container\">";
 	echo "<div class=\"container\">";
 	echo "<div class=\"row\">";
-	echo "<img src=$urlprofilpicture alt=\"Profil picture\" class=\"rounded-circle p-2 bd-highlight\">";
+	echo "<img src=\"";displayProfilePicture($user);
+	echo "\" alt=\"Profil utilisateur\" class=\"rounded-circle p-2 bd-highlight\" width=\"80px\" height=\"80px\">";
 	echo "<p id=\"pseudopostelement\">".$user->getUsername()."</p>";
 	echo "<p id=\"idpostelement\"> @".$user->getIdUser()."</p>";
 	echo "</div>";
