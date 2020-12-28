@@ -186,7 +186,7 @@
 		</div>
 	</div>
 	
-	<?php displayAllPost(); ?>
+	<script type="text/javascript" src="./scripts/postsndcomments.js"></script>
 	<script type="text/javascript" src="./scripts/likeanimation.js"></script>
 
 	<?php include ("templates/footer.inc.php"); ?>

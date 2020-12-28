@@ -10,7 +10,7 @@ include("functions/function.inc.php");
 		header("Location:personnalprofil.php");
 	}
 	else{
-		$bdd = BDconnect();
+		$bdd = BDConnect();
 		$req = $bdd->prepare("SELECT * FROM Users WHERE id_user = ?");
 		$req->execute(array($_GET["user"]));
 		if($req->rowCount() != 0){
@@ -74,7 +74,7 @@ include("functions/function.inc.php");
 				<?php 
 					// affichage des posts et like de l'utilisateur courant 
 					//echo $_SESSION["User"]->getIdUser();
-					$bdd = BDconnect();
+					$bdd = BDConnect();
 					$req = $bdd->prepare("(SELECT * FROM Post WHERE id_writer = ?) UNION (SELECT id_post, id_writer, text, url_image, datePost FROM Post NATURAL JOIN LikePost WHERE id_user = ?) ORDER BY id_post DESC");
 					$req->execute(array($researchuser->getIdUser(), $researchuser->getIdUser()));
 					//echo $req->rowCount();

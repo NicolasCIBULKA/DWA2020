@@ -14,7 +14,7 @@
 	
 	// connexion à la BD
 	
-	$bdd = BDconnect();
+	$bdd = BDConnect();
 	
 	// Verification si le post est vide ou pas
 

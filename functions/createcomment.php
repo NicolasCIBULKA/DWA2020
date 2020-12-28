@@ -11,7 +11,7 @@ if(empty($_SESSION["User"])){
 
 if(isset($_POST["message"]) && isset($_POST["idpost"])){
 	// connexion à la BD
-	$bdd = BDconnect();
+	$bdd = BDConnect();
 	$tmpuser = $_SESSION['User'];
 	$req = $bdd->prepare("INSERT INTO Comments (id_writer, id_post_commented, text, dateComment) VALUES (?,?,?,NOW())");
 	$req->execute(array($tmpuser->getIdUser(),intval($_POST["idpost"]),$_POST["message"]));

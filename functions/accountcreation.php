@@ -8,7 +8,7 @@
 	// on inclut les fonctions que nous avons crée
 	include("function.inc.php");
 	// Connexion à la BD
-	$bdd = BDconnect();
+	$bdd = BDConnect();
 
 	// On effectue une requete pour verifier la non existence de compte avec cet identifiant ou ce mail
 	$requete = 'SELECT id_user, mail FROM Users WHERE id_user= ? OR mail=? ';

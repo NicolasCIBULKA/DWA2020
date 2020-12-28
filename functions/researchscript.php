@@ -3,7 +3,7 @@ include("function.inc.php");
 include("../class/User.class.php");
 
 if(isset($_GET["iduser"])){
-			$bdd = BDconnect();
+			$bdd = BDConnect();
 			$req = $bdd->prepare("SELECT * FROM Users WHERE id_user LIKE ?");
 			$i = 0;
 			$req->execute(array("%".$_GET["iduser"]."%"));

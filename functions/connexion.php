@@ -10,7 +10,7 @@ require_once("../class/User.class.php");
 // On verifie que les elements sont pas vides
 if(isset($_POST['identifiant']) && isset($_POST['mdp'])){
 	// On se connecte à la BD
-	$bdd = BDconnect();
+	$bdd = BDConnect();
 	// On vérifie que les elements fournis correspondent à un compte
 
 	$requete = 'SELECT id_user, passwords FROM Users WHERE id_user= ? ';

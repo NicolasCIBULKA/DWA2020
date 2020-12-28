@@ -8,7 +8,7 @@ if(isset($_GET["iduser"])) {
 	$followedIndex = 0;
 	$postIndex = 0;
 	$comIndex = 0;
-	$bdd = BDconnect();
+	$bdd = BDConnect();
 	$followedReq = $bdd->prepare("SELECT idFollowed FROM Follow where idFollower = ?");
 	$followedReq->execute($_GET["iduser"]);
 	if($followedReq->rowCount() == 0) {

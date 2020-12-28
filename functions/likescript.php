@@ -11,7 +11,7 @@ $lik=explode( 'like',$_GET['postliked'] );
 // + A finir de compléter
 $like = createLike($lik[0]);
 $islike=islike($like,$_SESSION['User']);
-	$bdd = BDconnect();
+	$bdd = BDConnect();
 	$tmpuser = $_SESSION['User'];
 	if($islike=="true"){
 	$req = $bdd->prepare("INSERT INTO likepost (id_post, id_user) VALUES (?,?)");

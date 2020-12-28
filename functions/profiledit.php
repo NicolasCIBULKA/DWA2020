@@ -6,7 +6,7 @@
 		header("Location:index.php");
 	}
 
-	$bdd = BDconnect();
+	$bdd = BDConnect();
 
 	if(empty($_SESSION["User"])){
 		header("Location:index.php");
