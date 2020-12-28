@@ -37,7 +37,7 @@ function displayPost(Post $post) {
 	echo "<div id=\"postelement\" class=\"container\">";
 	echo "<div class=\"container\">";
 	echo "<div class=\"row\">";
-	echo "<img src=$urlprofilpicture alt=\"Profil utilisateur\" class=\"img-circle\">";
+	echo "<img src=$urlprofilpicture alt=\"Profil picture\" class=\"rounded-circle p-2 bd-highlight\">";
 	echo "<p id=\"pseudopostelement\">".$user->getUsername()."</p>";
 	echo "<p id=\"idpostelement\"> @".$user->getIdUser()."</p>";
 	echo "</div>";
@@ -46,7 +46,7 @@ function displayPost(Post $post) {
 	echo "<p>".$post->getTextPost()."</p>";
 	echo "</div>";
 	
-	echo "<img src=$post->getImagePost() alt=\"Image post\" class=\"img-responsive\">";
+	echo "<img src=$post->getImagePost() alt=\"Post image\" class=\"img-responsive\">";
 
 	echo "<div class=\"row\">";
 	echo "<p>Le".date_format($user->getDatePost(), 'Y-m-d à H:i:s')."</p>";
@@ -123,7 +123,7 @@ function displayComment(Comment $comment, User $user) {
 	echo "<div id=\"postelement\" class=\"container\">";
 	echo "<div class=\"container\">";
 	echo "<div class=\"row\">";
-	echo "<img src=$urlprofilpicture alt=\"Profil utilisateur\" class=\"img-circle\">";
+	echo "<img src=$urlprofilpicture alt=\"Profil picture\" class=\"rounded-circle p-2 bd-highlight\">";
 	echo "<p id=\"pseudopostelement\">".$user->getUsername()."</p>";
 	echo "<p id=\"idpostelement\"> @".$user->getIdUser()."</p>";
 	echo "</div>";
