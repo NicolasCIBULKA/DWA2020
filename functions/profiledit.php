@@ -55,7 +55,7 @@
   		 }
 	}
 
- header("Location:../options.php");
+header("Location:../options.php");
 	
 	}
  ?>
