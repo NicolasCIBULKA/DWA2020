@@ -6,18 +6,19 @@ include("functions/function.inc.php");
 	if(empty($_SESSION["User"])){
 		header("Location:index.php");
 	}
-	if($_GET["user"] == $_SESSION["User"]->getIdUser()){
+	if($_GET["iduser"] == $_SESSION["User"]->getIdUser()){
 		header("Location:personnalprofil.php");
 	}
 	else{
 		$bdd = BDConnect();
 		$req = $bdd->prepare("SELECT * FROM Users WHERE id_user = ?");
-		$req->execute(array($_GET["user"]));
+		$req->execute(array($_GET["iduser"]));
 		if($req->rowCount() != 0){
 			$row = $req->fetch();
 			$researchuser = new User($row[0], $row[1], $row[5] , $row[2] , $row[3] , $row[4] , $row[7], $row[6]);
 		}
 		else{
+			//echo $_GET["iduser"];
 			header("Location:feed.php");
 		}
 	}
@@ -92,7 +93,7 @@ include("functions/function.inc.php");
 						$user = new User($rowuser[0], $rowuser[1], $rowuser[5] , $rowuser[2] , $rowuser[3] , $rowuser[4] , $rowuser[7], $rowuser[6]);
 						$icon = returnpp($user);
 						echo "<div>";
-						echo "<a class=\"nameidpost\" href=\"profil.php?user=".$row[1]."\"><img class=\"rounded-circle p-2 bd-highlight\" width=\"80px\" height=\"80px\" src=\"".$icon."\" alt=\"Profil Picture\">".$rowuser[1]." - @".$row[1]."</a>";
+						echo "<a class=\"nameidpost\" href=\"profil.php?iduser=".$row[1]."\"><img class=\"rounded-circle p-2 bd-highlight\" width=\"80px\" height=\"80px\" src=\"".$icon."\" alt=\"Profil Picture\">".$rowuser[1]." - @".$row[1]."</a>";
 						$date = date_create($row[4]);
 						echo "<p> le ".date_format($date, 'Y-m-d \à H:i:s')."</p>";
 						echo "<p>".$row[2]."</p>";
