@@ -1,23 +1,29 @@
 $(".likebutton svg").click(function(){
   	var likeid = $(this).attr("id");
-  			var parentid=$(this).parents('.likebutton').find('.nblike');
+  	var typelement=$(this).parents('.likebutton').parent().parent().parent().attr("class");
+  	var nblike=$(this).parents('.likebutton').find('.nblike');
+  	  	
   	  	$.ajax({
 		url: './functions/likescript.php',
 		type: 'GET',
 		dataType: 'text',
-		data: {"postliked": likeid},
+		data: {"postliked": likeid,"typelement": typelement},
 	})
+
 	.done(function(response) {
 		console.log("success");
 
 	})
+
 	.fail(function(response) {
 		console.log("error");
 
 	})
+	
 	.always(function(response) {
 		console.log("complete");
-		parentid.text(" "+response);
+		console.log(typelement);
+		nblike.text(" "+response);
 		likeMethode(likeid);
 	})
 });

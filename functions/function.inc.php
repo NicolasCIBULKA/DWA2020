@@ -192,7 +192,7 @@ function displayAllPost(){
 	$requete = 'SELECT * FROM post;';
 	foreach  ($bdd->query($requete) as $row) {
 //	foreach ($row as $key => $value) {
-		$like = createLike($row['id_post']);
+		$like = createPostLike($row['id_post']);
 		if (empty($row['url_image'])){$row['url_image']='NULL';}
 		$date = date_create($row['datePost']);
 		$post = new Post($row['id_post'],$row['text'],$row['url_image'],$like,$row['id_writer'],$date);
@@ -202,7 +202,7 @@ function displayAllPost(){
 }
 */
 
-function createLike($id_post){
+function createPostLike($id_post){
 	$liked;
 	$i=0;
 	$bdd = BDConnect();
@@ -230,5 +230,32 @@ function createLike($id_post){
 	return $like;
 }
 
+function createCommentLike($id_comment){
+	$liked;
+	$i=0;
+	$bdd = BDConnect();
+	$bdd->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+		$requete1 = 'SELECT COUNT(*) FROM likecomment WHERE id_comment= ?';
+		$requete2 = 'SELECT id_user FROM likecomment WHERE id_comment= ?';
+		
+		$req = $bdd->prepare($requete1);
+		$req2 = $bdd->prepare($requete2);
+
+		$req->execute(array($id_comment));
+		$req2->execute(array($id_comment));
+
+		$row = $req->fetch();
+		$row2 = $req2->fetchAll();
+	$like = new Like(intval($row['COUNT(*)']));
+		if(!empty($row2)){
+		foreach ($row2 as $key => $value) {
+			$liked[$i]=$value['id_user'];
+			$i++;
+		}
+	$like->setLiked($liked);
+}
+
+	return $like;
+}
 
 ?>

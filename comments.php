@@ -2,6 +2,7 @@
  Page affichant les commentaires d'un post
  -->
 <?php 
+require_once("class/User.class.php");
 	session_start();
 	if(empty($_SESSION["User"])){
 		header("Location:index.php");
@@ -12,6 +13,7 @@
  ?>
  <?php include("functions/function.inc.php"); ?>
 <?php include ("templates/head.inc.php"); ?>
+<?php require_once("class/Like.class.php"); ?>
 	<?php include ("templates/header.inc.php"); ?>
 	
 	<?php include("templates/nav.inc.php"); ?>
@@ -51,7 +53,7 @@
 		// recuperation des commentaires associés au post affiché au dessus
 		if(isset($_GET["idpost"])){
 			$bdd = BDconnect();
-			$reqComment = $bdd->prepare("SELECT id_comment, id_writer,id_post_commented, text, DATE_FORMAT(dateComment, '%d/%m/%Y /à %Hh%imin%ss') AS date FROM Comments WHERE id_post_commented = ?");
+			$reqComment = $bdd->prepare("SELECT id_comment, id_writer,id_post_commented, text, DATE_FORMAT(dateComment, '%d/%m/%Y à %Hh%imin%ss') AS date FROM Comments WHERE id_post_commented = ?");
 			$reqComment->execute(array(intval($_GET["idpost"])));
 			// On teste si le post à déja des commentaires
 			if($reqComment->rowCount() > 0){
@@ -60,8 +62,11 @@
 					$req->execute(array($rowComment[1]));
 					$rowUser = $req->fetch();
 
+
+				$like = createCommentLike($rowComment[0]);
+
 					// Affichage
-					echo "<div class=\"container commentelement\">";
+					echo "<div id=\"".$rowComment[0]."\" class=\"container commentelement\">";
 					echo "<div class=\"container\">";
 					echo "<div class=\"row\">";
 					echo "<p class=\"pseudopostelement\">".$rowUser[0]." -</p>";
@@ -75,9 +80,10 @@
 					echo "</div>";
 					echo "<div class=\"row justify-content-center commentlike\" >";
 					echo "<div class=\"btn btn-lg likebutton orangecolor\">";
-					echo "<svg width=\"1em\" height=\"1em\" viewBox=\"0 0 16 16\" class=\"bi bi-heart\" fill=\"currentColor\" xmlns=\"http://www.w3.org/2000/svg\"><path fill-rule=\"evenodd\" d=\"M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z\"/>";
-					echo "</svg>";
-					echo "Like";
+					echo "<svg id=\"".$rowComment[0]."like\" width=\"1em\" height=\"1em\" viewBox=\"-0.5 -1 17 17\" class=\"bi bi-heart-fill\" fill=\"".userlike($like,$_SESSION['User'])."\" stroke=\"orange\" xmlns=\"http://www.w3.org/2000/svg\">\n";
+	echo "<path fill-rule=\"evenodd\" d=\"M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z\"/>\n";
+	echo "</svg>\n";
+					echo "<span class=\"nblike\"> ".$like->getNumberLikes()."</span>\n";
 					echo "</div>";
 					echo "</div>";
 					echo "</div>";
