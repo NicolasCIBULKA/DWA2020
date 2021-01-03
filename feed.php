@@ -185,8 +185,9 @@
 			</div>
 		</div>
 	</div>
+	<input id="iduser" name="iduser" type="hidden" value="<?php echo $_SESSION['User']->getIdUser()?>">
 	<div id="postelts">
-		
+
 	</div>
 	<script type="text/javascript" src="./scripts/postsndcomments.js"></script>
 	<script type="text/javascript" src="./scripts/likeanimation.js"></script>

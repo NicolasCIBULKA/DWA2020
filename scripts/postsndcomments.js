@@ -1,5 +1,5 @@
 $("#idrefreshlink").click(function() {	
-	var iduser = $("#iduser").text();
+	//var iduser = $("#iduser").text();
 	console.log($("#iduser").val());
 	$("#postelts").text(" ");
 	$.ajax({
