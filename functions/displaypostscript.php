@@ -16,14 +16,14 @@ if(isset($_GET["iduser"])) {
 	}
 	else {
 		while(($followedRow = $followedReq->fetch() && ($followedIndex < 20)) {
-			$postReq = $bdd->prepare("SELECT * FROM Post where idWriter = ?");
-			$postReq->execute($followedRow[1]);
+			$postReq = $bdd->prepare("(SELECT * FROM Post where idWriter = ?) UNION (SELECT * FROM Post where idWriter = ?)");
+			$postReq->execute($followedRow[1],$_GET["iduser"]);
 			while(($postRow = $postReq->fetch()) && ($postIndex < 20)) {
 				$post = new Post($postRow[2],$postRow[3],false,$postRow[1]);
 				displayPost($post);
 				$postIndex++;
 
-				$comReq = $bdd->prepare("SELECT * FROM Comments where idPostCommented = ?");
+				/*$comReq = $bdd->prepare("SELECT * FROM Comments where idPostCommented = ?");
 				$comReq->execute($postRow[0]);
 				while(($comRow = $comReq->fetch()) && ($comIndex < 20)) {
 					$comWriterReq = $bdd->prepare("SELECT * FROM User where idUser = ?");
@@ -33,7 +33,7 @@ if(isset($_GET["iduser"])) {
 					$commentWriter = new User($comWriterRow[0],$comWriterRow[1],$comWriterRow[5]);
 					displayComment($comment,$commentWriter);
 					$comIndex++;
-				}
+				}*/
 			}
 		$followedIndex++;
 		}

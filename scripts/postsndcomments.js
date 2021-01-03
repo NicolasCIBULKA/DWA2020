@@ -1,3 +1,4 @@
+$("#idrefreshlink").click(function() {	
 	var iduser = $("#iduser").text();
 	console.log($("#iduser").val());
 	$("#postelts").text(" ");
@@ -19,3 +20,4 @@
 	.always(function() {
 		console.log("complete");
 	});
+});

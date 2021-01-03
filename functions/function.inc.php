@@ -71,7 +71,7 @@ function displayPost(Post $post) {
 	echo "</div>\n";
 }
 
-function displayComment(Comment $comment, User $user) {
+/*function displayComment(Comment $comment, User $user) {
 	
 //	$user = $post->getUser();
 	$urlprofilpicture = displayProfilePicture($user);
@@ -115,7 +115,7 @@ function displayComment(Comment $comment, User $user) {
 	echo "</div>";
 	echo "</div>";
 	echo "</div>";
-}
+}*/
 
 
 function displayProfilePicture(User $user){
