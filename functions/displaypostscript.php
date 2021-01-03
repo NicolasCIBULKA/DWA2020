@@ -17,7 +17,7 @@ if(isset($_GET["iduser"])) {
 	else {
 		while(($followedRow = $followedReq->fetch() && ($followedIndex < 20)) {
 			$postReq = $bdd->prepare("(SELECT * FROM Post where idWriter = ?) UNION (SELECT * FROM Post where idWriter = ?)");
-			$postReq->execute($followedRow[1],$_GET["iduser"]);
+			$postReq->execute(array($followedRow[1],$_GET["iduser"]));
 			while(($postRow = $postReq->fetch()) && ($postIndex < 20)) {
 				$post = new Post($postRow[2],$postRow[3],false,$postRow[1]);
 				displayPost($post);
