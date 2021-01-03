@@ -185,7 +185,9 @@
 			</div>
 		</div>
 	</div>
-	
+	<div id="postelts">
+		
+	</div>
 	<script type="text/javascript" src="./scripts/postsndcomments.js"></script>
 	<script type="text/javascript" src="./scripts/likeanimation.js"></script>
 
