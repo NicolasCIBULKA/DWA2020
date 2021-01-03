@@ -48,7 +48,7 @@ include("functions/function.inc.php");
 			<!-- photo de profil generique à modifier -->
 				<div class="row">
 					<div class="col">
-						<img  class="img-fluid" id="banner" src="./images/banner-orange.png" alt="profile banner"/>
+						<img  class="img-fluid" id="banner" style="width:100%;max-height:320px; object-fit:cover" src="<?php  ($researchuser) ?>" alt="profile banner"/>
 					</div>
 				</div>
 				<div class="row">

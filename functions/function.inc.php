@@ -207,26 +207,25 @@ function createPostLike($id_post){
 	$i=0;
 	$bdd = BDConnect();
 	$bdd->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-		$requete1 = 'SELECT COUNT(*) FROM likepost WHERE id_post= ?';
-		$requete2 = 'SELECT id_user FROM likepost WHERE id_post= ?';
+	$requete1 = 'SELECT COUNT(*) FROM likepost WHERE id_post= ?';
+	$requete2 = 'SELECT id_user FROM likepost WHERE id_post= ?';
 		
-		$req = $bdd->prepare($requete1);
-		$req2 = $bdd->prepare($requete2);
+	$req = $bdd->prepare($requete1);
+	$req2 = $bdd->prepare($requete2);
 
-		$req->execute(array($id_post));
-		$req2->execute(array($id_post));
+	$req->execute(array($id_post));
+	$req2->execute(array($id_post));
 
-		$row = $req->fetch();
-		$row2 = $req2->fetchAll();
+	$row = $req->fetch();
+	$row2 = $req2->fetchAll();
 	$like = new Like(intval($row['COUNT(*)']));
-		if(!empty($row2)){
+	if(!empty($row2)){
 		foreach ($row2 as $key => $value) {
 			$liked[$i]=$value['id_user'];
 			$i++;
 		}
-	$like->setLiked($liked);
-}
-
+		$like->setLiked($liked);
+	}
 	return $like;
 }
 
@@ -247,15 +246,40 @@ function createCommentLike($id_comment){
 		$row = $req->fetch();
 		$row2 = $req2->fetchAll();
 	$like = new Like(intval($row['COUNT(*)']));
-		if(!empty($row2)){
+	if(!empty($row2)){
 		foreach ($row2 as $key => $value) {
 			$liked[$i]=$value['id_user'];
 			$i++;
 		}
-	$like->setLiked($liked);
-}
+		$like->setLiked($liked);
+	}
 
 	return $like;
+}
+
+
+function deleteBanner(User $user){
+    $files=glob("../banners/".$user->getIdUser().".*");
+    foreach ($files as $filename) {
+    	unlink($filename);
+    }
+}
+
+function displayBanner(User $user){
+	$extention=array("png","jpg","jpeg");
+	$banner;
+	foreach ($extention as $ext){
+		$chemin="./banners/".$user->getIdUser().".".$ext;
+		if (file_exists($chemin)){
+			$banner=$chemin;
+		}
+	}
+
+	if (!empty($banner)){
+		echo $banner;
+	} else{
+		echo "./images/banner-orange.png";
+	}
 }
 
 ?>
