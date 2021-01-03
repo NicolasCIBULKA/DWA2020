@@ -15,11 +15,11 @@ if($typeElment[1]=="postelement"){
 	$bdd = BDConnect();
 	$tmpuser = $_SESSION['User'];
 	if($islike=="true"){
-		$req = $bdd->prepare("INSERT INTO likepost (id_post, id_user) VALUES (?,?)");
+		$req = $bdd->prepare("INSERT INTO LikePost (id_post, id_user) VALUES (?,?)");
 		$req->execute(array($lik[0],$tmpuser->getIdUser()));
 	}
 	else if ($islike=="false"){
-		$req = $bdd->prepare("DELETE FROM likepost wHERE id_post=? AND id_user=? ");
+		$req = $bdd->prepare("DELETE FROM LikePost wHERE id_post=? AND id_user=? ");
 		$req->execute(array($lik[0],$tmpuser->getIdUser()));
 	}
 	
@@ -34,11 +34,11 @@ else if ($typeElment[1]=="commentelement") {
 	$bdd = BDConnect();
 	$tmpuser = $_SESSION['User'];
 	if($islike=="true"){
-		$req = $bdd->prepare("INSERT INTO likecomment (id_comment, id_user) VALUES (?,?)");
+		$req = $bdd->prepare("INSERT INTO LikeComment (id_comment, id_user) VALUES (?,?)");
 		$req->execute(array($lik[0],$tmpuser->getIdUser()));
 	}
 	else if ($islike=="false"){
-		$req = $bdd->prepare("DELETE FROM likecomment wHERE id_comment=? AND id_user=? ");
+		$req = $bdd->prepare("DELETE FROM LikeComment wHERE id_comment=? AND id_user=? ");
 		$req->execute(array($lik[0],$tmpuser->getIdUser()));
 	}
 	

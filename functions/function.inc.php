@@ -235,8 +235,8 @@ function createCommentLike($id_comment){
 	$i=0;
 	$bdd = BDConnect();
 	$bdd->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-		$requete1 = 'SELECT COUNT(*) FROM likecomment WHERE id_comment= ?';
-		$requete2 = 'SELECT id_user FROM likecomment WHERE id_comment= ?';
+		$requete1 = 'SELECT COUNT(*) FROM LikeComment WHERE id_comment= ?';
+		$requete2 = 'SELECT id_user FROM LikeComment WHERE id_comment= ?';
 		
 		$req = $bdd->prepare($requete1);
 		$req2 = $bdd->prepare($requete2);

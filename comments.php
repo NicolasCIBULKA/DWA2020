@@ -63,7 +63,7 @@ require_once("class/User.class.php");
 					$rowUser = $req->fetch();
 
 
-				$like = createCommentLike($rowComment[0]);
+					$like = createCommentLike($rowComment[0]);
 
 					// Affichage
 					echo "<div id=\"".$rowComment[0]."\" class=\"container commentelement\">";
