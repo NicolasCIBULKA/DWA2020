@@ -10,14 +10,14 @@ if(isset($_GET["iduser"])) {
 	$comIndex = 0;
 	$bdd = BDConnect();
 	$followedReq = $bdd->prepare("SELECT idFollowed FROM Follow where idFollower = ?");
-	$followedReq->execute($_GET["iduser"]);
+	$followedReq->execute(array($_GET["iduser"]));
 	if($followedReq->rowCount() == 0) {
 		echo "<p class=\"text-center\">Vous ne suivez aucune personne</p>";
 	}
 	else {
 		while(($followedRow = $followedReq->fetch() && ($followedIndex < 20)) {
-			$postReq = $bdd->prepare("(SELECT * FROM Post where idWriter = ?) UNION (SELECT * FROM Post where idWriter = ?)");
-			$postReq->execute(array($followedRow[1],$_GET["iduser"]));
+			$postReq = $bdd->prepare("SELECT * FROM Post where idWriter = ?");
+			$postReq->execute(array($followedRow[1]);
 			while(($postRow = $postReq->fetch()) && ($postIndex < 20)) {
 				$post = new Post($postRow[2],$postRow[3],false,$postRow[1]);
 				displayPost($post);
