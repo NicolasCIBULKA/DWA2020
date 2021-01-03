@@ -29,7 +29,10 @@ if(isset($_GET["iduser"])) {
 
 	$req = $bdd->prepare("(SELECT * FROM Post WHERE id_writer = ?) UNION (SELECT id_post, id_writer, text, url_image, datePost FROM Post NATURAL JOIN LikePost WHERE id_user = ?) ORDER BY id_post DESC");
 					$req->execute(array($_GET["iduser"],$_GET["iduser"]));
-					//echo $req->rowCount();
+					if($req->rowCount() == 0) {
+						echo "<p class=\"text-center\">Vous n'avez rédigé aucun post</p>";
+					}
+					else{
 					while($row = $req->fetch()){
 						$req2 = $bdd->prepare("SELECT * FROM Users WHERE id_user = ?");
 						$req2->execute(array($row[1]));
@@ -56,17 +59,17 @@ if(isset($_GET["iduser"])) {
 						echo "</div>";
 						echo "</div>";
 					}
+				}
 
-	$followedReq = $bdd->prepare("SELECT id_followed FROM Follow where id_follower = ?");
+	$followedReq = $bdd->prepare("SELECT id_followed FROM Follow WHERE id_follower = ?");
 	$followedReq->execute(array($_GET["iduser"]));
 	if($followedReq->rowCount() == 0) {
 		echo "<p class=\"text-center\">Vous ne suivez aucune personne</p>";
 	}
 	else {
-		while(($followedRow = $followedReq->fetch() && ($followedIndex < 20))) {
-
+		while(($followedRow = $followedReq->fetch()) && ($followedIndex < 20)) {
 			$postReq = $bdd->prepare("SELECT * FROM Post WHERE id_writer = ?");
-			$postReq->execute(array($followedRow[1]));
+			$postReq->execute(array($followedRow[0]));
 			while(($postRow = $postReq->fetch()) && ($postIndex < 20)) {
 				$postLike = createPostLike($postRow[0]);
 				$post = new Post($postRow[0],$postRow[2],$postRow[3],$postLike,$postRow[1],$postRow[4]);
