@@ -2,6 +2,7 @@
  Page affichant les commentaires d'un post
  -->
 <?php 
+include("class/Post.class.php");
 require_once("class/User.class.php");
 	session_start();
 	if(empty($_SESSION["User"])){
@@ -20,21 +21,47 @@ require_once("class/User.class.php");
 	
 	<h2 id="soustitre">Post</h2>
 
+<?php
+$bdd = BDconnect();
+$reqPost = $bdd->prepare("SELECT * FROM post WHERE id_post = ?");
+			$reqPost->execute(array(intval($_GET["idpost"])));
+			
+			while($postRow = $reqPost->fetch()){
+			$postLike = createPostLike($postRow[0]);
+				$date = date_create($postRow[4]);
+				$post = new Post($postRow[0],$postRow[2],$postRow[3],$postLike,$postRow[1],$date);
+			}
+			$user_id=$post->getUser();
+			$user = getUserFromPost($user_id);
+			$icon = returnpp($user);
+			$likeid=$post->getPostId()."like";
+
+
+?>
+
 	<div class="container postelement">
 		<div class="container">
 			<div class="row">
-				<p class="pseudopostelement">Pseudo -</p>
-				<p class="idpostelement"> @Identifiant</p>
+			<?php
+			echo "<a class=\"nameidpost\" href=\"profil.php?iduser=".$user->getIdUser()."\"><img class=\"rounded-circle p-2 bd-highlight\" width=\"80px\" height=\"80px\" src=\"".$icon."\" alt=\"Profil Picture\">".$user->getUsername()." - @".$user->getIdUser()."</a>"; ?>
 			</div>
 			<div class="row textpostelement">
-				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam corporis, omnis tempora nam voluptates cum qui consectetur ipsum, tempore numquam autem necessitatibus harum hic in rerum molestias atque, veniam minus.
-				Recusandae at facere unde quas cum, magnam, saepe minima tempore corporis, non odit iusto, odio consequuntur! Quisquam totam, similique, doloribus nemo earum possimus pariatur, atque id eaque placeat quia dolore.</p>
+				<p><?php echo $post->getTextPost() ?> </p>
 			</div>
 			<div class="row">
-				<p>Le 23/12/2020 à 12h23:43</p>
+				<p><?php echo date_format($post->getDatePost(), 'd/m/Y \à H:i:s') ?> </p>
+			</div>
+			<div class="row justify-content-center commentlike">
+				<div class="btn btn-lg likebutton orangecolor">
+	<?php	
+	echo "<svg id=\"$likeid\" width=\"1em\" height=\"1em\" viewBox=\"-0.5 -1 17 17\" class=\"bi bi-heart-fill\" fill=\"".userlike($post->getLike(),$_SESSION['User'])."\" stroke=\"orange\" xmlns=\"http://www.w3.org/2000/svg\">\n";
+	echo "<path fill-rule=\"evenodd\" d=\"M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z\"/>\n";
+	echo "</svg>\n";
+	echo "<span class=\"nblike\"> ".$post->getLike()->getNumberLikes()."</span>\n"; ?>
 			</div>
 			</div>
 		</div>
+
 	<h4 class="container soustitrecommentaires" >Ecrire un Commentaire</h4>
 	<div class="container commentelement">
 		<form class="align-items-center col-12 col-md-12 col-sm-12 col-xs-12 form-group" action="functions/createcomment.php" method="post">
@@ -52,7 +79,6 @@ require_once("class/User.class.php");
 	<?php 
 		// recuperation des commentaires associés au post affiché au dessus
 		if(isset($_GET["idpost"])){
-			$bdd = BDconnect();
 			$reqComment = $bdd->prepare("SELECT id_comment, id_writer,id_post_commented, text, DATE_FORMAT(dateComment, '%d/%m/%Y à %Hh%imin%ss') AS date FROM Comments WHERE id_post_commented = ?");
 			$reqComment->execute(array(intval($_GET["idpost"])));
 			// On teste si le post à déja des commentaires
