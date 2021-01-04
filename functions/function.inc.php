@@ -1,4 +1,5 @@
 <?php
+
 // ---------------------------------------
 //				FONCTIONS BD
 // ---------------------------------------
@@ -44,10 +45,15 @@ function displayPost(Post $post) {
 
 	echo "<div class=\"row textpostelement\">\n";
 	echo "<p>".$post->getTextPost()."</p>\n";
-
 	echo "</div>\n";
+
+	$imgpost = $post->getImagePost();
+	if($imgpost != "") {
+		echo "<img class=\"rounded mx-auto d-block\"src=\"".$imgpost."\" width=\"30%\" alt=\"post image\">";
+	}
+
 	echo "<div class=\"row\">\n";
-	echo "<p>Le ".date_format($post->getDatePost(), 'd/m/Y \à H:i:s')."</p>\n";
+	echo "<p>Le ".date_format($post->getDatePost(), 'd/m/Y \à H:i')."</p>\n";
 	echo "</div>\n";
 	echo "<div class=\"row justify-content-center commentlike\">\n";
 	echo "<div class=\"btn btn-lg likebutton orangecolor\" data-islike=\"".userlike($post->getLike(),$_SESSION['User'])."\">\n";

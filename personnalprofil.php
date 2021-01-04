@@ -71,12 +71,11 @@ include("functions/function.inc.php");
 						echo "<div>";
 						echo "<a class=\"nameidpost\" href=\"profil.php?iduser=".$row[1]."\"><img class=\"rounded-circle p-2 bd-highlight\" width=\"80px\" height=\"80px\" src=\"".$icon."\" alt=\"Profil Picture\">".$rowuser[1]." - @".$row[1]."</a>";
 						$date = date_create($row[4]);
-						echo "<p> le ".date_format($date, 'Y-m-d \à H:i:s')."</p>";
 						echo "<p>".$row[2]."</p>";
 						if(!is_null($row[3])){
 							echo "<img class=\"rounded mx-auto d-block\"src=\"".$row[3]."\" width=\"30%\" alt=\"post image\">";
 						}
-
+						echo "<p> Le ".date_format($date, 'Y-m-d \à H:i')."</p>";
 						// like et commentaire à ajouter
 						echo "</div>";
 						echo "</div>";

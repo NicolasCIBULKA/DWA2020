@@ -1,4 +1,4 @@
-$(".likebutton svg").click(function(){
+$('body').on('click', '.likebutton svg', function() {
   	var likeid = $(this).attr("id");
   	var typelement=$(this).parents('.likebutton').parent().parent().parent().attr("class");
   	var nblike=$(this).parents('.likebutton').find('.nblike');
@@ -19,10 +19,9 @@ $(".likebutton svg").click(function(){
 		console.log("error");
 
 	})
-	
+
 	.always(function(response) {
 		console.log("complete");
-		console.log(typelement);
 		nblike.text(" "+response);
 		likeMethode(likeid);
 	})

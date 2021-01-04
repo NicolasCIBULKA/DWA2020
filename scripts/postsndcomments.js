@@ -1,5 +1,12 @@
+window.onload = function(){
+displaypost();
+};
+
 $("#idrefreshlink").click(function() {	
-	//var iduser = $("#iduser").text();
+displaypost();
+});
+function displaypost(){
+
 	console.log($("#iduser").val());
 	$("#postelts").text(" ");
 	$.ajax({
@@ -20,4 +27,5 @@ $("#idrefreshlink").click(function() {
 	.always(function() {
 		console.log("complete");
 	});
-});
+
+};

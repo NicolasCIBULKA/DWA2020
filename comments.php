@@ -53,7 +53,7 @@ require_once("class/User.class.php");
 		// recuperation des commentaires associés au post affiché au dessus
 		if(isset($_GET["idpost"])){
 			$bdd = BDconnect();
-			$reqComment = $bdd->prepare("SELECT id_comment, id_writer,id_post_commented, text, DATE_FORMAT(dateComment, '%d/%m/%Y à %Hh%imin%ss') AS date FROM Comments WHERE id_post_commented = ?");
+			$reqComment = $bdd->prepare("SELECT id_comment, id_writer,id_post_commented, text, DATE_FORMAT(dateComment, '%d/%m/%Y à %Hh%i') AS date FROM Comments WHERE id_post_commented = ?");
 			$reqComment->execute(array(intval($_GET["idpost"])));
 			// On teste si le post à déja des commentaires
 			if($reqComment->rowCount() > 0){
