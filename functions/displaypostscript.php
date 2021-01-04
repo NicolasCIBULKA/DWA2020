@@ -16,13 +16,13 @@ if(isset($_GET["iduser"])) {
 
 	$bdd = BDConnect();
 
-	$req = $bdd->prepare("(SELECT * FROM Post WHERE id_writer = ?) UNION (SELECT id_post, id_writer, text, url_image, datePost FROM Post NATURAL JOIN LikePost WHERE id_user = ?) ORDER BY id_post DESC");
-	$req->execute(array($_GET["iduser"],$_GET["iduser"]));
+	$req = $bdd->prepare("(SELECT * FROM Post WHERE id_writer = ?) UNION (SELECT id_post, id_writer, text, url_image, dateLike AS datePost FROM Post NATURAL JOIN LikePost WHERE id_user = ?) UNION (SELECT * FROM Post WHERE id_writer IN (SELECT id_followed FROM Follow WHERE id_follower = ?)) UNION (SELECT id_post, id_writer, text, url_image, dateLike AS datePost FROM Post NATURAL JOIN LikePost WHERE id_user IN (SELECT id_followed FROM Follow WHERE id_follower = ?)) ORDER BY datePost DESC");
+	$req->execute(array($_GET["iduser"],$_GET["iduser"], $_SESSION["User"]->getIdUser(),$_SESSION["User"]->getIdUser()));
 	if($req->rowCount() == 0) {
 		echo "<p class=\"text-center\">Vous n'avez rédigé aucun post</p>";
 	}
 	else {
-		while(($row = $req->fetch()) && ($userIndex < 5)) {
+		while(($row = $req->fetch()) /*&& ($userIndex < 5)*/) {
 
 			/*$req2 = $bdd->prepare("SELECT * FROM Users WHERE id_user = ?");
 			$req2->execute(array($row[1]));
@@ -40,8 +40,11 @@ if(isset($_GET["iduser"])) {
 			$userPostLike = createPostLike($row[0]);
 			$userPostDate = date_create($row[4]);
 			$userPost = new Post($row[0],$row[2],$row[3],$userPostLike,$row[1],$userPostDate);
-			if($row[1] != $_GET["iduser"]) {
-				echo "<p class=\"font-italic\"> Vous avez aimé ce post </p>";
+			//echo $row[1];
+			$reqlike = $bdd->prepare("SELECT * FROM LikePost WHERE id_post = ? AND id_user = ?");
+			$reqlike->execute(array($row[0], $_SESSION["User"]->getIdUser(),));
+			if(/*$row[1] != $_SESSION["User"]->getIdUser()*/$reqlike->rowCount() == 1) {
+				echo "<p class=\"font-italic\" style=\"margin-left:15%; padding-top:1em;\"> Vous avez aimé ce post </p>";
 			}
 			/*echo "<p>".$row[2]."</p>";
 			if(!is_null($row[3])) {
@@ -60,7 +63,7 @@ if(isset($_GET["iduser"])) {
 			$userIndex++;
 		}
 	}
-
+/*
 	$followedReq = $bdd->prepare("SELECT id_followed FROM Follow WHERE id_follower = ?");
 	$followedReq->execute(array($_GET["iduser"]));
 	if($followedReq->rowCount() == 0) {
@@ -94,9 +97,11 @@ if(isset($_GET["iduser"])) {
 			}
 		}
 	}
+	*/
 }
 else {
 	echo "<p class=\"text-center\">Erreur lors de l'affichage des posts ...</p>";
 }
+
 
 ?>
