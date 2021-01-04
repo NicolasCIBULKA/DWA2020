@@ -55,7 +55,7 @@ function displayPost(Post $post) {
 	echo "<div class=\"row\">\n";
 	echo "<p>Le ".date_format($post->getDatePost(), 'd/m/Y \à H:i')."</p>\n";
 	echo "</div>\n";
-	
+
 	echo "<div class=\"row justify-content-center commentlike\">\n";
 		echo "<div class=\"btn btn-lg likebutton orangecolor\" data-islike=\"".userlike($post->getLike(),$_SESSION['User'])."\">\n";
 			echo "<svg id=\"$likeid\" width=\"1em\" height=\"1em\" viewBox=\"-0.5 -1 17 17\" class=\"bi bi-heart-fill\" fill=\"".userlike($post->getLike(),$_SESSION['User'])."\" stroke=\"orange\" xmlns=\"http://www.w3.org/2000/svg\">\n";
@@ -78,7 +78,7 @@ function displayPost(Post $post) {
 	echo "</div>\n";
 }
 
-function displayLikeNdComment(Post $post) {
+/*function displayLikeNdComment(Post $post) {
 
 	$likeid=$post->getPostId()."like";
 	echo "<div class=\"row justify-content-center commentlike\">\n";
@@ -99,7 +99,7 @@ function displayLikeNdComment(Post $post) {
 			echo "</a>\n";
 		echo "</div>\n";
 	echo "</div>\n";
-}
+}*/
 
 /*function displayComment(Comment $comment, User $user) {
 	
