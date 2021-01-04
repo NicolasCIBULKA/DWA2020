@@ -24,7 +24,7 @@ if(isset($_GET["iduser"])) {
 	else {
 		while(($row = $req->fetch()) && ($userIndex < 5)) {
 
-			$req2 = $bdd->prepare("SELECT * FROM Users WHERE id_user = ?");
+			/*$req2 = $bdd->prepare("SELECT * FROM Users WHERE id_user = ?");
 			$req2->execute(array($row[1]));
 			$rowuser = $req2->fetch();
 			echo "<div class=\"container postelement\">";
@@ -36,17 +36,22 @@ if(isset($_GET["iduser"])) {
 			$user = new User($rowuser[0], $rowuser[1], $rowuser[5] , $rowuser[2] , $rowuser[3] , $rowuser[4] , $rowuser[7], $rowuser[6]);
 			$icon = returnpp($user);
 			echo "<div>";
-			echo "<a class=\"nameidpost\" href=\"profil.php?iduser=".$row[1]."\"><img class=\"rounded-circle p-2 bd-highlight\" width=\"80px\" height=\"80px\" src=\"".$icon."\" alt=\"Profil Picture\">".$rowuser[1]." - @".$row[1]."</a>";
+			echo "<a class=\"nameidpost\" href=\"profil.php?iduser=".$row[1]."\"><img class=\"rounded-circle p-2 bd-highlight\" width=\"80px\" height=\"80px\" src=\"".$icon."\" alt=\"Profil Picture\">".$rowuser[1]." - @".$row[1]."</a>";*/
 			$userPostLike = createPostLike($row[0]);
-			$date = date_create($row[4]);
-			$userPost = new Post($row[0],$row[2],$row[3],$userPostLike,$row[1],$date);
-			echo "<p>".$row[2]."</p>";
+			$userPostDate = date_create($row[4]);
+			$userPost = new Post($row[0],$row[2],$row[3],$userPostLike,$row[1],$userPostDate);
+			if($row[1] != $_GET["iduser"]) {
+				echo "<p class=\"font-italic\"> Vous avez aimé ce post </p>";
+			}
+			/*echo "<p>".$row[2]."</p>";
 			if(!is_null($row[3])) {
 				echo "<img class=\"rounded mx-auto d-block\"src=\"".$row[3]."\" width=\"30%\" alt=\"post image\">";
 			}
-			echo "<p> Le ".date_format($date, 'Y-m-d \à H:i')."</p>";
+			echo "<p> Le ".date_format($userPostDate, 'Y-m-d \à H:i')."</p>";*/
 
-			displayLikeNdComment($userPost);
+			//displayLikeNdComment($userPost);
+
+			displayPost($userPost);
 
 			echo "</div>";
 			echo "</div>";
@@ -82,7 +87,6 @@ if(isset($_GET["iduser"])) {
 				$postLike = createPostLike($postRow[0]);
 				$date = date_create($postRow[4]);
 				$post = new Post($postRow[0],$postRow[2],$postRow[3],$postLike,$postRow[1],$date);
-				//Ce qu'il y a dans le "if" ne s'affiche pas !!!
 				if($postRow[1] != $followedRow[0]) {
 					echo "<p class=\"font-italic\">".$followedRow[0]." à aimé le post suivant</p>";
 				}
