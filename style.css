@@ -394,3 +394,22 @@ border:1px solid #e0e0e0;
 width:160px;
 height:160px;
 }
+
+.optionsection{
+	border-bottom: 1px solid black;
+	margin-top: 1em;
+	padding-bottom: 1em;
+}
+
+.optionbutton{
+	background-color: orange;
+	color: white;
+}
+.optionbutton:hover{
+	background-color: orangered;
+	color: white;
+}
+
+.optionform{
+
+}

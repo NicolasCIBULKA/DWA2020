@@ -23,7 +23,7 @@ require_once("class/User.class.php");
 
 <?php
 $bdd = BDconnect();
-$reqPost = $bdd->prepare("SELECT * FROM post WHERE id_post = ?");
+$reqPost = $bdd->prepare("SELECT * FROM Post WHERE id_post = ?");
 			$reqPost->execute(array(intval($_GET["idpost"])));
 			
 			while($postRow = $reqPost->fetch()){
@@ -79,12 +79,12 @@ $reqPost = $bdd->prepare("SELECT * FROM post WHERE id_post = ?");
 	<?php 
 		// recuperation des commentaires associés au post affiché au dessus
 		if(isset($_GET["idpost"])){
-<<<<<<< HEAD
+
 			$bdd = BDconnect();
 			$reqComment = $bdd->prepare("SELECT id_comment, id_writer,id_post_commented, text, DATE_FORMAT(dateComment, '%d/%m/%Y à %Hh%i') AS date FROM Comments WHERE id_post_commented = ?");
-=======
-			$reqComment = $bdd->prepare("SELECT id_comment, id_writer,id_post_commented, text, DATE_FORMAT(dateComment, '%d/%m/%Y à %Hh%imin%ss') AS date FROM Comments WHERE id_post_commented = ?");
->>>>>>> 8d4e40c48ce7a9186d192df3d06a42e1546b7ae4
+
+		
+
 			$reqComment->execute(array(intval($_GET["idpost"])));
 			// On teste si le post à déja des commentaires
 			if($reqComment->rowCount() > 0){
@@ -130,7 +130,7 @@ $reqPost = $bdd->prepare("SELECT * FROM post WHERE id_post = ?");
 			echo "<p class=\"text-center\">Erreur lors de l'accès au commentaires, retournez à la page d'accueil !</p>";
 		}
 	?>
-
+	</div>
 	<script type="text/javascript" src="./scripts/postnbcara.js"></script>
 	<script type="text/javascript" src="./scripts/likeanimation.js"></script>
 	<?php include ("templates/footer.inc.php"); ?>

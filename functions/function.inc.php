@@ -213,8 +213,8 @@ function createPostLike($id_post){
 	$i=0;
 	$bdd = BDConnect();
 	$bdd->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-	$requete1 = 'SELECT COUNT(*) FROM likepost WHERE id_post= ?';
-	$requete2 = 'SELECT id_user FROM likepost WHERE id_post= ?';
+	$requete1 = 'SELECT COUNT(*) FROM LikePost WHERE id_post= ?';
+	$requete2 = 'SELECT id_user FROM LikePost WHERE id_post= ?';
 		
 	$req = $bdd->prepare($requete1);
 	$req2 = $bdd->prepare($requete2);

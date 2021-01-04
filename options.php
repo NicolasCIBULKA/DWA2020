@@ -12,17 +12,18 @@
 	<?php include("templates/nav.inc.php"); ?>
 	<h2 id="soustitre">Options de compte</h2>
 
-	<div class=" text-center container">
+	<div class="optionsection text-center container">
+		<div>
 			<h3 class="text-center">Informations générales</h3>
 			<h4 class="text-center">Informations actuelles</h4>
-			<p>Identifiant d'utilisateur : <?php echo $_SESSION["User"]->getIdUser(); ?></p>
-			<p>Pseudo : <?php echo $_SESSION["User"]->getUserName(); ?> </p>
-			<p>Date de Naissance : <?php echo $_SESSION["User"]->getBirthdate(); ?></p>
-			<p>Nom : <?php echo $_SESSION["User"]->getLastName(); ?></p>
-			<p>Prenom : <?php echo $_SESSION["User"]->getFirstname(); ?></p>
+			<p class="font-weight-bold">Identifiant d'utilisateur : <?php echo $_SESSION["User"]->getIdUser(); ?></p>
+			<p class="font-weight-bold">Pseudo : <?php echo $_SESSION["User"]->getUserName(); ?> </p>
+			<p class="font-weight-bold">Date de Naissance : <?php echo $_SESSION["User"]->getBirthdate(); ?></p>
+			<p class="font-weight-bold">Nom : <?php echo $_SESSION["User"]->getLastName(); ?></p>
+			<p class="font-weight-bold">Prenom : <?php echo $_SESSION["User"]->getFirstname(); ?></p>
 			<h4 class="text-center">Changer les informations</h4>
 
-			<form action="./functions/profiledit.php" class="text-center" method="post">
+			<form action="./functions/profiledit.php" class=" text-center optionform" method="post">
 				<p>
 					<label for="pseudo">Pseudo :</label>
 					<input type="text" name="pseudo" id="pseudo">
@@ -43,10 +44,11 @@
 					<label for="ancien-mot-de-passe">Ancien mot de passe :</label>
 					<input type="password" name="ancien-mdp" id="ancien-mdp">
 				</p>
-				<input type="submit" value="Changer les informations">
+				<input class="btn optionbutton" type="submit" value="Changer les informations">
 			</form>
 	</div>
-	<div class="container">
+</div>
+	<div class=" optionsection container">
 		<h3 class="text-center">Image de profil</h3>
 		<h4 class="text-center">Image de profil actuelle</h4>
 			<div class="col-3 , col-sm-2 , rounded mx-auto d-block text-center">
@@ -58,9 +60,9 @@
 		<form action="./functions/profiledit.php" class="text-center" method="post" enctype="multipart/form-data">
 			<div>
 				<label for="image">Modifier votre image de profil :</label>
-				<input type="file" name="image" id="image">
+				<input type="file"  name="image" id="image">
 			</div>
-			<input type="submit" value="Changer l'image de profil">
+			<input class="btn optionbutton" type="submit" value="Changer l'image de profil">
 		</form>
 
 		<h3 class="text-center">Bannière</h3>
@@ -76,10 +78,11 @@
 				<label for="image">Modifier votre bannière :</label>
 				<input type="file" name="banniere" id="banniere">
 			</div>
-			<input type="submit" value="Changer votre bannière">
+			<input class="btn optionbutton" type="submit" value="Changer votre bannière">
 		</form>
 
 	</div>
 	<?php include ("templates/footer.inc.php");?>
 	</body>
+
 </html>

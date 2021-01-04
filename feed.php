@@ -43,7 +43,7 @@
 					  <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/></svg>
 </a>
 
-<a class="btn rounded-circle messagebutton" href="createpost.php" title="Ecrire un message">
+<a class="btn rounded-circle messagebutton" style="padding-top: 0.5em; padding-bottom: 0.5em;" href="createpost.php" title="Ecrire un message">
 	<span class="fa fa-comment"></span>
 </a>
 	<div class=" container postelement">
