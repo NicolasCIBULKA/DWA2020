@@ -3,6 +3,7 @@
 class Like{
 	private $_liked=[];
 	private $_numberLikes=0;
+	private $_datelike;
 
 	public function __construct($numberLikes){
 		
@@ -16,12 +17,18 @@ class Like{
 	
 	}
 	
+	public function setDateLike($date){
+
+	$this->_datelike=$date;
+	
+	}
+
 	public function setNumberLikes($numberLikes){
 
 		if(!is_int($numberLikes)){
 			trigger_error("Cette partie doit s'agir d'un int", E_USER_WARNING);
         		return;
-      		}
+      	}
 
 
 		$this->_numberLikes=$numberLikes;
@@ -29,6 +36,10 @@ class Like{
 
 	public function getLiked(){
 		return $this->_liked;
+	}
+
+	public function getDateLike(){
+		return $this->_datelike;
 	}
 
 	public function getNumberLikes(){

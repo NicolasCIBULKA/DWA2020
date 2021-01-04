@@ -15,7 +15,7 @@ if($typeElment[1]=="postelement"){
 	$bdd = BDConnect();
 	$tmpuser = $_SESSION['User'];
 	if($islike=="true"){
-		$req = $bdd->prepare("INSERT INTO LikePost (id_post, id_user) VALUES (?,?)");
+		$req = $bdd->prepare("INSERT INTO LikePost (id_post, id_user, dateLike) VALUES (?,?,NOW())");
 		$req->execute(array($lik[0],$tmpuser->getIdUser()));
 	}
 	else if ($islike=="false"){

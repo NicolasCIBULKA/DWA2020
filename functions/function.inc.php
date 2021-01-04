@@ -261,6 +261,7 @@ function createPostLike($id_post){
 
 function createCommentLike($id_comment){
 	$liked;
+	$date;
 	$i=0;
 	$bdd = BDConnect();
 	$bdd->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
@@ -279,9 +280,11 @@ function createCommentLike($id_comment){
 	if(!empty($row2)){
 		foreach ($row2 as $key => $value) {
 			$liked[$i]=$value['id_user'];
+			$date[$i]=$value['dateLike'];
 			$i++;
 		}
 		$like->setLiked($liked);
+		$like->setDateLike($date);
 	}
 
 	return $like;
