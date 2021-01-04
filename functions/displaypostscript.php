@@ -75,12 +75,16 @@ if(isset($_GET["iduser"])) {
 		}
 	else {
 		while($followedRow = $followedReq->fetch()) {
-			$postReq = $bdd->prepare("SELECT * FROM Post WHERE id_writer = ? ORDER BY id_post DESC");
-			$postReq->execute(array($followedRow[0]));
-			while(($postRow = $postReq->fetch()) && ($postIndex < 20)) {
+			$postReq = $bdd->prepare("(SELECT * FROM Post WHERE id_writer = ?) UNION (SELECT * FROM Post NATURAL JOIN LikePost WHERE id_user = ?) ORDER BY id_post DESC");
+			$postReq->execute(array($followedRow[0],$followedRow[0]));
+			while($postRow = $postReq->fetch()) {
 				$postLike = createPostLike($postRow[0]);
 				$date = date_create($postRow[4]);
 				$post = new Post($postRow[0],$postRow[2],$postRow[3],$postLike,$postRow[1],$date);
+				//Ce qu'il y a dans le "if" ne s'affiche pas !!!
+				if($postRow[1] != $followedRow[0]) {
+					echo "<p class=\"font-italic\">".$followedRow[0]." à aimé le post suivant</p>";
+				}
 				displayPost($post);
 				$postIndex++;
 			}
