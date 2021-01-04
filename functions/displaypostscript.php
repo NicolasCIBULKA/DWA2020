@@ -64,7 +64,7 @@ if(isset($_GET["iduser"])) {
 	$followedReq = $bdd->prepare("SELECT id_followed FROM Follow WHERE id_follower = ?");
 	$followedReq->execute(array($_GET["iduser"]));
 	if($followedReq->rowCount() == 0) {
-			$allPostReq = $bdd->prepare("SELECT * FROM Post WHERE id_writer != ? ORDER BY id_post DESC");
+			$allPostReq = $bdd->prepare("SELECT * FROM Post WHERE id_writer != ? ORDER BY datePost DESC");
 			$allPostReq->execute(array($_GET["iduser"]));
 			if($allPostReq->rowCount() == 0) {
 				echo "<p class=\"text-center\">Il n'y a aucun post sur le réseau social Blabla't</p>";
@@ -81,7 +81,7 @@ if(isset($_GET["iduser"])) {
 		}
 	else {
 		while($followedRow = $followedReq->fetch()) {
-			$postReq = $bdd->prepare("(SELECT * FROM Post WHERE id_writer = ?) UNION (SELECT id_post, id_writer, text, url_image, datePost FROM Post NATURAL JOIN LikePost WHERE id_user = ?) ORDER BY id_post DESC");
+			$postReq = $bdd->prepare("(SELECT * FROM Post WHERE id_writer = ?) UNION (SELECT id_post, id_writer, text, url_image, dateLike AS datePost FROM Post NATURAL JOIN LikePost WHERE id_user = ?) ORDER BY datePost DESC");
 			$postReq->execute(array($followedRow[0],$followedRow[0]));
 			while($postRow = $postReq->fetch()) {
 				$postLike = createPostLike($postRow[0]);

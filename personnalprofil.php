@@ -52,7 +52,7 @@ include("functions/function.inc.php");
 					// affichage des posts et like de l'utilisateur courant 
 					//echo $_SESSION["User"]->getIdUser();
 					$bdd = BDconnect();
-					$req = $bdd->prepare("(SELECT * FROM Post WHERE id_writer = ?) UNION (SELECT id_post, id_writer, text, url_image, datePost FROM Post NATURAL JOIN LikePost WHERE id_user = ?) ORDER BY id_post DESC");
+					$req = $bdd->prepare("(SELECT * FROM Post WHERE id_writer = ?) UNION (SELECT id_post, id_writer, text, url_image, dateLike AS datePost FROM Post NATURAL JOIN LikePost WHERE id_user = ?) ORDER BY datePost DESC");
 					$req->execute(array($_SESSION["User"]->getIdUser(), $_SESSION["User"]->getIdUser()));
 					//echo $req->rowCount();
 					while($row = $req->fetch()){
