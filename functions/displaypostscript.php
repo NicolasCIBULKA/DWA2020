@@ -12,9 +12,6 @@ session_start();
 
 if(isset($_GET["iduser"])) {
 	$userIndex = 0;
-	$followedIndex = 0;
-	$allPostIndex = 0;
-	$postIndex = 0;
 	$comIndex = 0;
 
 	$bdd = BDConnect();
@@ -25,7 +22,7 @@ if(isset($_GET["iduser"])) {
 		echo "<p class=\"text-center\">Vous n'avez rédigé aucun post</p>";
 	}
 	else {
-		while(($row = $req->fetch()) && ($userIndex < 3)) {
+		while(($row = $req->fetch()) && ($userIndex < 5)) {
 
 			$req2 = $bdd->prepare("SELECT * FROM Users WHERE id_user = ?");
 			$req2->execute(array($row[1]));
@@ -40,12 +37,17 @@ if(isset($_GET["iduser"])) {
 			$icon = returnpp($user);
 			echo "<div>";
 			echo "<a class=\"nameidpost\" href=\"profil.php?iduser=".$row[1]."\"><img class=\"rounded-circle p-2 bd-highlight\" width=\"80px\" height=\"80px\" src=\"".$icon."\" alt=\"Profil Picture\">".$rowuser[1]." - @".$row[1]."</a>";
+			$userPostLike = createPostLike($row[0]);
 			$date = date_create($row[4]);
+			$userPost = new Post($row[0],$row[2],$row[3],$userPostLike,$row[1],$date);
 			echo "<p>".$row[2]."</p>";
 			if(!is_null($row[3])) {
 				echo "<img class=\"rounded mx-auto d-block\"src=\"".$row[3]."\" width=\"30%\" alt=\"post image\">";
 			}
 			echo "<p> Le ".date_format($date, 'Y-m-d \à H:i')."</p>";
+
+			displayLikeNdComment($userPost);
+
 			echo "</div>";
 			echo "</div>";
 			echo "</div>";
@@ -68,14 +70,13 @@ if(isset($_GET["iduser"])) {
 					$allPostDate = date_create($allPostRow[4]);
 					$allPost = new Post($allPostRow[0],$allPostRow[2],$allPostRow[3],$allPostLike,$allPostRow[1],$allPostDate);
 					displayPost($allPost);
-					$allPostIndex++;
 				}
 			}
 
 		}
 	else {
 		while($followedRow = $followedReq->fetch()) {
-			$postReq = $bdd->prepare("(SELECT * FROM Post WHERE id_writer = ?) UNION (SELECT * FROM Post NATURAL JOIN LikePost WHERE id_user = ?) ORDER BY id_post DESC");
+			$postReq = $bdd->prepare("(SELECT * FROM Post WHERE id_writer = ?) UNION (SELECT id_post, id_writer, text, url_image, datePost FROM Post NATURAL JOIN LikePost WHERE id_user = ?) ORDER BY id_post DESC");
 			$postReq->execute(array($followedRow[0],$followedRow[0]));
 			while($postRow = $postReq->fetch()) {
 				$postLike = createPostLike($postRow[0]);
@@ -86,9 +87,7 @@ if(isset($_GET["iduser"])) {
 					echo "<p class=\"font-italic\">".$followedRow[0]." à aimé le post suivant</p>";
 				}
 				displayPost($post);
-				$postIndex++;
 			}
-			$followedIndex++;
 		}
 	}
 }
